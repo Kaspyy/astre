@@ -419,11 +419,9 @@ form.sign-up-form {
   cursor: pointer;
 }
 
-
 .navbar i:nth-child(1) {
   color: rgb(128, 11, 196);
 }
-
 
 .photo-and-actions {
   height: calc(100vh - 44px);
@@ -469,8 +467,8 @@ form.sign-up-form {
     rgba(2, 0, 36, 1) 0%,
     rgba(35, 34, 65, 0) 0%,
     rgba(0, 0, 0, 0.7) 52%
-    );
-    border-radius: 10px;
+  );
+  border-radius: 10px;
 }
 
 .photo-name-and-age {
@@ -525,7 +523,7 @@ form.sign-up-form {
   color: #1be4a1;
 }
 
-@media(min-width: 1025px) {
+@media (min-width: 1025px) {
   .photo {
     width: 367px;
     height: 684px;
@@ -539,4 +537,61 @@ form.sign-up-form {
     display: flex;
     justify-content: flex;
   }
+}
+
+/*chats.html*/
+::-webkit-scrollbar {
+  width: 0px;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+.new-pairs-and-messages-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-pairs-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.container-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0 0.5rem;
+}
+
+.new-pair {
+  display: flex;
+  flex-direction: column;
+}
+.new-pair-photo {
+  /* width: 90px;
+  height: 120px;
+  border-radius: 4px; */
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+
+}
+
+.new-pair-photo > img {
+  /* width: 90px;
+  height: 120px;
+  border-radius: 4px; */
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  margin: .5rem 1rem;
+}
+
+.new-pair-username {
+  /* width: 90px; */
+  width: 74px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
 }
