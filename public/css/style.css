@@ -405,9 +405,13 @@ form.sign-up-form {
 
 .navbar {
   display: flex;
+  background-color: #fff;
   width: 100%;
   justify-content: space-around;
   padding: 10px 0;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
 
 .navbar i {
@@ -541,8 +545,8 @@ form.sign-up-form {
 
 /*chats.html*/
 ::-webkit-scrollbar {
-  width: 0px;  /* Remove scrollbar space */
-  background: transparent;  /* Optional: just make scrollbar invisible */
+  width: 0px; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
 }
 
 .new-pairs-and-messages-container {
@@ -552,6 +556,11 @@ form.sign-up-form {
 
 .new-pairs-container {
   display: flex;
+  flex-direction: column;
+}
+
+.new-pairs-fields {
+  display: flex;
   flex-direction: row;
 }
 
@@ -559,6 +568,8 @@ form.sign-up-form {
   font-size: 0.9rem;
   font-weight: 600;
   padding: 0 0.5rem;
+  height: 0.9rem;
+  margin-bottom: 1rem;
 }
 
 .new-pair {
@@ -572,7 +583,6 @@ form.sign-up-form {
   width: 74px;
   height: 74px;
   border-radius: 50%;
-
 }
 
 .new-pair-photo > img {
@@ -582,7 +592,7 @@ form.sign-up-form {
   width: 74px;
   height: 74px;
   border-radius: 50%;
-  margin: .5rem 1rem;
+  margin: 0.5rem 1rem;
 }
 
 .new-pair-username {
@@ -594,4 +604,97 @@ form.sign-up-form {
   margin: 0.5rem 1rem;
   font-size: 1rem;
   font-weight: 600;
+}
+
+.messages-container {
+  width: 100vw;
+}
+.message-container {
+  display: flex;
+  width: 100vw;
+  flex-direction: row;
+  margin-bottom: 1rem;
+}
+
+.message-container-photo {
+  /* width: 90px;
+  height: 120px;
+  border-radius: 4px; */
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  margin: 0.5rem 0.5rem;
+}
+
+.message-container-photo > img {
+  /* width: 90px;
+  height: 120px;
+  border-radius: 4px; */
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  margin: 0.5rem 0.5rem;
+}
+
+.message-container-text {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0rem;
+  margin: 0 0 0 0.5rem;
+  justify-content: center;
+  border-bottom: 5px black;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-left-width: 0px;
+  border-bottom-width: 1px;
+  border-style: solid;
+  border-color: #656e7b;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.message-container-username {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin: 0.1rem 0;
+}
+
+.message-container-snippet {
+  color: #656e7b;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: auto;
+  white-space: nowrap;
+}
+
+@media (min-width: 1025px) {
+  .navbar {
+    width: 400px;
+    display: flex;
+    justify-content: space-around;
+  }
+  .new-pairs-and-messages-container {
+    width: 800px;
+    overflow: hidden;
+    margin: 0 35vw;
+  }
+  .messages-container {
+    width: 800px;
+  }
+  .message-container {
+    width: 800px;
+    border-right: 5px;
+    margin: 0;
+  }
+  .message-container-photo {
+    margin-bottom: 1.5rem;
+  }
+  .message-container-text {
+    border-bottom: 0px;
+    max-width: 800px;
+  }
+  .message-container:hover {
+    box-shadow: 0 0 15px 0 rgba(43, 78, 78, 0.1);
+    border-left: 5px solid #7a00ac;
+  }
 }
