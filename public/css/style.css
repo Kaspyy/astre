@@ -454,6 +454,7 @@ form.sign-up-form {
   border-radius: 9px;
   margin: 0.4rem 0.2rem;
   font-size: 0.8rem;
+  display: inline-block;
 }
 .hobby:nth-child(2){
   grid-column: 1;
@@ -480,6 +481,7 @@ form.sign-up-form {
   font-weight: 500;
   color: #00000073;
   font-size: 1rem;
+  padding-top: 0.1rem;
 }
 .info i {
   color: #00000073;
@@ -493,7 +495,7 @@ form.sign-up-form {
   padding: 0.25rem 0.4rem 0 0;
 }
 .sex > i {
-  padding: 0.25rem 0.6rem 0 0;
+  padding: 0.25rem 0.3rem 0 0;
 }
 .zodiac-sign {
   position: absolute;
@@ -546,6 +548,148 @@ form.sign-up-form {
   margin-bottom: 1rem;
 }
 
+.compatibility {
+  display: flex;
+  flex-direction: column;
+}
+
+.zodiac-signs-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.zodiac-signs-container > i {
+  align-content: center;
+  font-size: 1.5rem;
+  color: transparent linear-gradient(90deg, #6401B6 0%, #32015B 100%) 0% 0% no-repeat padding-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-zodiac-sign {
+  font-size: 2.5rem;
+  padding: 1rem 1rem;
+  color: #fff;
+  background: transparent linear-gradient(90deg, #6401B6 0%, #32015B 100%) 0% 0% no-repeat padding-box;
+  box-shadow: 0 2px 6px 0 rgba(112, 125, 134, 0.14);
+  height: 60px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 1rem 1rem;
+  position: relative;
+}
+
+.user-zodiac-sign-indicator {
+  background: transparent linear-gradient(90deg, #575757 0%, #111111 100%) 0% 0% no-repeat padding-box;
+  color: white;
+  display: inline-block;
+  position: absolute;
+  padding: 0 0.15rem;
+  font-size: 0.7rem;
+  top: 0;
+  right: -0.6rem;
+  border-radius: 10px;
+
+}
+
+.their-zodiac-sign {
+  font-size: 2.5rem;
+  padding: 1rem 1rem;
+  color: #fff;
+  background: transparent linear-gradient(90deg, #6401B6 0%, #32015B 100%) 0% 0% no-repeat padding-box;
+  height: 60px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 1rem 1rem;
+}
+.percentages-container {
+  display: flex;
+  flex-direction: column;
+}
+.overall-percentage-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1rem;
+}
+.overall-percentage-background-bar {
+  height: 1.5rem;
+  width: 200px;
+  background-color: #dadfe6;
+  border-radius: 20px;
+}
+.overall-percentage-foreground-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  height: 1.5rem;
+  width: calc(200px * 0.5);
+  background-color: #FFEA00;
+  border-radius: 20px;
+}
+.other-percentages-container {
+  display: flex;
+  flex-direction: row;
+  font-size: 0.8rem;
+  justify-content: center;
+}
+
+.other-percentage-container {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+
+.other-percentage-background-bar{
+  width: 100px;
+  height: 1rem;
+  background-color: #dadfe6;
+  border-radius: 20px;
+}
+ .love-percentage-foreground-bar {
+  display:  flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: calc(100px * 0.4);
+  height: 1rem;
+  background-color: #FFEA00;
+  border-radius: 20px;
+}
+.sex-percentage-foreground-bar {
+  display:  flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: calc(100px * 0.8);
+  height: 1rem;
+  background-color: #1be4a1;
+  border-radius: 20px;
+}
+.friendship-percentage-foreground-bar {
+  display:  flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: calc(100px * 0.6);
+  height: 1rem;
+  background-color: #FFEA00;
+  border-radius: 20px;
+}
+
+.compatibility > .photo-bio {
+  margin-top: .5rem;
+}
+
 /* Actions */
 .actions {
   display: flex;
@@ -582,10 +726,18 @@ form.sign-up-form {
   color: #1be4a1;
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 820px) {
+  .photo-and-text-content {
+    width: 375px;
+    height: 812px;
+  }
+  .photo-and-text {
+    width: 375px;
+    height: 812px;
+  }
   .photo {
-    width: 367px;
-    height: 684px;
+    width: 375px;
+    height: 50%;
   }
 
   .navbar {
