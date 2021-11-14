@@ -448,7 +448,8 @@ form.sign-up-form {
 }
 .hobby {
   text-align: center;
-  background: transparent linear-gradient(90deg, #575757 0%, #111111 100%) 0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(90deg, #575757 0%, #111111 100%) 0% 0%
+    no-repeat padding-box;
   color: white;
   height: 1.2rem;
   border-radius: 9px;
@@ -456,16 +457,17 @@ form.sign-up-form {
   font-size: 0.8rem;
   display: inline-block;
 }
-.hobby:nth-child(2){
+.hobby:nth-child(2) {
   grid-column: 1;
   grid-row: 2;
-  background: transparent linear-gradient(90deg, #6401B6 0%, #32015B 100%) 0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(90deg, #6401b6 0%, #32015b 100%) 0% 0%
+    no-repeat padding-box;
 }
-.hobby:nth-child(3){
+.hobby:nth-child(3) {
   grid-column: 2;
   grid-row: 2;
 }
-.hobby:nth-child(4){
+.hobby:nth-child(4) {
   grid-column: 3;
   grid-row: 2;
 }
@@ -562,7 +564,8 @@ form.sign-up-form {
 .zodiac-signs-container > i {
   align-content: center;
   font-size: 1.5rem;
-  color: transparent linear-gradient(90deg, #6401B6 0%, #32015B 100%) 0% 0% no-repeat padding-box;
+  color: transparent linear-gradient(90deg, #6401b6 0%, #32015b 100%) 0% 0%
+    no-repeat padding-box;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -572,7 +575,8 @@ form.sign-up-form {
   font-size: 2.5rem;
   padding: 1rem 1rem;
   color: #fff;
-  background: transparent linear-gradient(90deg, #6401B6 0%, #32015B 100%) 0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(90deg, #6401b6 0%, #32015b 100%) 0% 0%
+    no-repeat padding-box;
   box-shadow: 0 2px 6px 0 rgba(112, 125, 134, 0.14);
   height: 60px;
   width: 60px;
@@ -585,7 +589,8 @@ form.sign-up-form {
 }
 
 .user-zodiac-sign-indicator {
-  background: transparent linear-gradient(90deg, #575757 0%, #111111 100%) 0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(90deg, #575757 0%, #111111 100%) 0% 0%
+    no-repeat padding-box;
   color: white;
   display: inline-block;
   position: absolute;
@@ -594,14 +599,14 @@ form.sign-up-form {
   top: 0;
   right: -0.6rem;
   border-radius: 10px;
-
 }
 
 .their-zodiac-sign {
   font-size: 2.5rem;
   padding: 1rem 1rem;
   color: #fff;
-  background: transparent linear-gradient(90deg, #6401B6 0%, #32015B 100%) 0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(90deg, #6401b6 0%, #32015b 100%) 0% 0%
+    no-repeat padding-box;
   height: 60px;
   width: 60px;
   display: flex;
@@ -633,7 +638,7 @@ form.sign-up-form {
   color: white;
   height: 1.5rem;
   width: calc(200px * 0.5);
-  background-color: #FFEA00;
+  background-color: #ffea00;
   border-radius: 20px;
 }
 .other-percentages-container {
@@ -649,24 +654,24 @@ form.sign-up-form {
   margin: 5px;
 }
 
-.other-percentage-background-bar{
+.other-percentage-background-bar {
   width: 100px;
   height: 1rem;
   background-color: #dadfe6;
   border-radius: 20px;
 }
- .love-percentage-foreground-bar {
-  display:  flex;
+.love-percentage-foreground-bar {
+  display: flex;
   justify-content: center;
   align-items: center;
   color: white;
   width: calc(100px * 0.4);
   height: 1rem;
-  background-color: #FFEA00;
+  background-color: #ffea00;
   border-radius: 20px;
 }
 .sex-percentage-foreground-bar {
-  display:  flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   color: white;
@@ -676,18 +681,18 @@ form.sign-up-form {
   border-radius: 20px;
 }
 .friendship-percentage-foreground-bar {
-  display:  flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   color: white;
   width: calc(100px * 0.6);
   height: 1rem;
-  background-color: #FFEA00;
+  background-color: #ffea00;
   border-radius: 20px;
 }
 
 .compatibility > .photo-bio {
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 /* Actions */
@@ -904,4 +909,178 @@ form.sign-up-form {
     box-shadow: 0 0 15px 0 rgba(43, 78, 78, 0.1);
     border-left: 5px solid #7a00ac;
   }
+}
+
+/* PROFILE */
+
+.profile-screen-background {
+  background: transparent linear-gradient(90deg, #8b1fe2 0%, #5e00ac 100%) 0% 0%
+    no-repeat padding-box;
+  height: calc(100vh - 44px);
+  width: 100vw;
+}
+
+.profile-screen-foreground {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  height: 65%;
+  box-shadow: 0 4px 10px -4px;
+}
+.profile-main-photo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.profile-main-photo-container > h2 {
+  word-spacing: 0.3rem;
+  margin-bottom: 3rem;
+}
+.profile-main-photo-background-1 {
+  background: transparent linear-gradient(90deg, #8b1fe2 0%, #5e00ac 100%) 0% 0%
+    no-repeat padding-box;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  margin: 40px auto 10px auto;
+}
+.profile-main-photo-background-2 {
+  background-color: white;
+  width: 210px;
+  height: 210px;
+  display: flex;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-main-photo,
+.profile-main-photo > img {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.profile-options-panel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.profile-action-container {
+  text-align: center;
+  font-size: 1rem;
+  color: rgba(136, 136, 136, 0.77);
+}
+
+.edit-profile-screen-background {
+  background-color: #5757571c;
+  height: 120vh;
+}
+.edit-profile-screen-background > .navbar {
+  justify-content: center;
+  z-index: 2;
+}
+.navbar > h2 {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  transform: translateX(30px);
+}
+.done-button {
+  display: flex;
+  align-items: center;
+  color: #6401b6;
+  margin-right: 1rem;
+}
+.edit-profile-photos-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1rem 0.5rem;
+}
+.edit-profile-photo-container {
+  background-color: #57575723;
+  height: 170px;
+  width: 110px;
+  border-radius: 5px;
+  position: relative;
+}
+.edit-profile-photo-container > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.action-add {
+  background: #6401b6;
+  box-shadow: 0 2px 6px 0 rgb(112 125 134 / 14%);
+  position: absolute;
+  top: 150px;
+  right: -7px;
+  margin: 0;
+  height: 28px;
+  width: 28px;
+  font-size: 17px;
+  color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: transform 500ms ease;
+}
+
+.action-remove {
+  background: #fff;
+  box-shadow: 0 2px 6px 0 rgb(112 125 134 / 14%);
+  position: absolute;
+  top: 150px;
+  right: -7px;
+  margin: 0;
+  height: 28px;
+  width: 28px;
+  font-size: 17px;
+  color: #6401b6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: transform 500ms ease;
+}
+
+.edit-profile-screen-background h4 {
+  margin: 1rem 0.5rem 0.2rem;
+}
+textarea {
+  width: 100vw;
+  height: 300px;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  padding: 10px;
+}
+
+textarea:focus, input:focus{
+  outline: none;
+}
+
+.edit-profile-choose-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.5rem;
+  background-color: white;
+  height: 50px;
+  color: #57575769;
 }
