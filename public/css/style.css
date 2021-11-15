@@ -924,7 +924,7 @@ form.sign-up-form {
   background-color: white;
   display: flex;
   flex-direction: column;
-  height: 65%;
+  height: 80vh;
   box-shadow: 0 4px 10px -4px;
 }
 .profile-main-photo-container {
@@ -932,6 +932,17 @@ form.sign-up-form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* position: relative; */
+}
+
+.profile-main-photo .user-zodiac-sign {
+  position: absolute;
+  bottom: -26px;
+  right: -11px;
+  width: 55px;
+  height: 55px;
+  z-index: 1;
+  font-size: 2.5rem;
 }
 .profile-main-photo-container > h2 {
   word-spacing: 0.3rem;
@@ -968,6 +979,7 @@ form.sign-up-form {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
 }
 
 .profile-options-panel {
@@ -979,6 +991,31 @@ form.sign-up-form {
   text-align: center;
   font-size: 1rem;
   color: rgba(136, 136, 136, 0.77);
+}
+
+@media (min-width: 820px) {
+  .profile-screen-foreground {
+    width: 400px;
+    height: 70vh;
+    margin: auto;
+    position: relative;
+  }
+  .navbar {
+    z-index: 1;
+  }
+  .profile-screen-background {
+    /* width: 400px; */
+    margin: auto;
+  }
+  .profile-main-photo-container {
+    margin: 5rem;
+  }
+  .profile-options-panel {
+    margin: -90px 3rem;
+    justify-content: space-between;
+    position: relative;
+    transform: translateY(0 vh);
+  }
 }
 
 .edit-profile-screen-background {
@@ -1070,7 +1107,8 @@ textarea {
   padding: 10px;
 }
 
-textarea:focus, input:focus{
+textarea:focus,
+input:focus {
   outline: none;
 }
 
@@ -1083,4 +1121,41 @@ textarea:focus, input:focus{
   background-color: white;
   height: 50px;
   color: #57575769;
+}
+
+@media (min-width: 376px) {
+  .edit-profile-screen-background {
+    width: 400px;
+    margin: auto;
+    height: 1000px;
+  }
+}
+
+.settings-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1rem 2rem;
+
+}
+.settings-screen > h3 {
+  margin: 1rem auto;
+
+}
+.settings-screen > .input {
+  border: 0;
+  border-bottom: 1px solid #6401b6;
+  width: 90%;
+  font-size: .7em;
+  padding: 7px 0;
+  color: #070707;
+  outline: none;
+  border-radius: 10px;
+  margin-top: 1rem;
+  margin: auto;
+  text-align: center;
+}
+
+.settings-screen > .btn {
+  margin: 1rem auto;
 }
