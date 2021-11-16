@@ -402,6 +402,13 @@ form.sign-up-form {
 }
 
 /* SWIPE.html */
+[data-tab-content] {
+  display: none;
+}
+
+.active[data-tab-content] {
+  display: block;
+}
 
 .navbar {
   display: flex;
@@ -412,20 +419,40 @@ form.sign-up-form {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+  list-style-type: none;
 }
 
-.navbar i {
+.tabs {
+  display: flex;
+  background-color: #fff;
+  width: 100%;
+  justify-content: space-around;
+  padding: 10px 0;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  list-style-type: none;
+}
+
+.tab {
   font-size: 1.5rem;
   color: #dadfe6;
-}
-
-.navbar i:hover {
   cursor: pointer;
 }
 
-.navbar i:nth-child(1) {
-  color: rgb(128, 11, 196);
+.tab:hover {
+  color:rgb(226, 191, 247)
 }
+
+.tab.active {
+  color:rgb(128, 11, 196);
+}
+
+.tab.content {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
 
 .photo-and-text {
   width: 98vw;
@@ -880,15 +907,21 @@ form.sign-up-form {
 }
 
 @media (min-width: 1025px) {
-  .navbar {
+  .tabs {
     width: 400px;
     display: flex;
+    margin: auto;
     justify-content: space-around;
   }
+
+  .message-container-snippet {
+    width: 300px;
+  }
+
   .new-pairs-and-messages-container {
-    width: 800px;
+    width: 600px;
     overflow: hidden;
-    margin: 0 35vw;
+    margin: auto;
   }
   .messages-container {
     width: 800px;
@@ -1147,13 +1180,12 @@ input:focus {
   border-bottom: 1px solid #6401b6;
   width: 90%;
   font-size: .7em;
-  padding: 7px 0;
+  padding: 7px 1rem;
   color: #070707;
   outline: none;
   border-radius: 10px;
   margin-top: 1rem;
   margin: auto;
-  text-align: center;
 }
 
 .settings-screen > .btn {
