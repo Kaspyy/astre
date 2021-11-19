@@ -13,4 +13,12 @@ class DefaultController extends AppController {
     {
         $this->render('astre');
     }
+    public function settings()
+    {
+        $this->render('settings');
+    }
+    public function edit_profile()
+    {
+        $this->render('edit_profile');
+    }
 }
