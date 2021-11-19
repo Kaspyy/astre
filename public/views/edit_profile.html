@@ -12,62 +12,63 @@
     <link rel="stylesheet" href="public/css/style.css" />
   </head>
   <body>
-    <div class="edit-profile-screen-background">
+    <div class="edit-profile-screen-background" style="overflow-y: scroll;">
       <nav class="navbar">
         <h2>EDIT PROFILE</h2>
         <div class="done-button">Done</div>
       </nav>
-      <div class="edit-profile-photos-container">
-        <div class="edit-profile-photo-container">
-          <img src="public/img/profilepics/profile-pic.jpg" alt="" />
-          <div class="action-remove">
-            <i class="fas fa-times"></i>
+        <div class="edit-profile-photos-container">
+          <div class="edit-profile-photo-container">
+            <img src="public/img/profilepics/profile-pic.jpg" alt="" />
+            <div class="action-remove">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+          <div class="edit-profile-photo-container">
+            <div class="action-add">
+              <i class="fas fa-plus"></i>
+            </div>
+          </div>
+          <div class="edit-profile-photo-container">
+            <div class="action-add">
+              <i class="fas fa-plus"></i>
+            </div>
           </div>
         </div>
-        <div class="edit-profile-photo-container">
-          <div class="action-add">
-            <i class="fas fa-plus"></i>
+        <div class="edit-profile-bio">
+          <h4>About me</h4>
+          <textarea
+            id="user-bio"
+            name="bio"
+            maxlength="250"
+            placeholder="Tell something about yourself."
+          ></textarea>
+        </div>
+        <div class="edit-profile-choose">
+          <h4>Hobbies</h4>
+          <div class="edit-profile-choose-container">
+            Workout, Drinks
+            <div class="arrow-button">
+              <i class="fas fa-chevron-right"></i>
+            </div>
           </div>
         </div>
-        <div class="edit-profile-photo-container">
-          <div class="action-add">
-            <i class="fas fa-plus"></i>
+        <div class="edit-profile-choose">
+          <h4>Lives in</h4>
+          <div class="edit-profile-choose-container">
+            Cracow
+            <div class="arrow-button">
+              <i class="fas fa-chevron-right"></i>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="edit-profile-bio">
-        <h4>About me</h4>
-        <textarea
-          id="user-bio"
-          name="bio"
-          maxlength="250"
-          placeholder="Tell something about yourself."
-        ></textarea>
-      </div>
-      <div class="edit-profile-choose">
-        <h4>Hobbies</h4>
-        <div class="edit-profile-choose-container">
-          Workout, Drinks
-          <div class="arrow-button">
-            <i class="fas fa-chevron-right"></i>
-          </div>
-        </div>
-      </div>
-      <div class="edit-profile-choose">
-        <h4>Lives in</h4>
-        <div class="edit-profile-choose-container">
-          Cracow
-          <div class="arrow-button">
-            <i class="fas fa-chevron-right"></i>
-          </div>
-        </div>
-      </div>
-      <div class="edit-profile-choose">
-        <h4>Gender</h4>
-        <div class="edit-profile-choose-container">
-          Man
-          <div class="arrow-button">
-            <i class="fas fa-chevron-right"></i>
+        <div class="edit-profile-choose">
+          <h4>Gender</h4>
+          <div class="edit-profile-choose-container">
+            Man
+            <div class="arrow-button">
+              <i class="fas fa-chevron-right"></i>
+            </div>
           </div>
         </div>
       </div>
