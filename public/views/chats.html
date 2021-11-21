@@ -11,39 +11,45 @@
       rel="stylesheet"
     />
     <title>Astre | dates, friends, astrology</title>
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="public/css/style.css" />
   </head>
   <body>
-    <nav class="navbar">
-      <i class="fas fa-heart"></i>
-      <i class="fas fa-comments"></i>
-      <i class="fas fa-user"></i>
-    </nav>
-    <div class="new-pairs-and-messages-container" style = "overflow-y: scroll">
+    <ul class="tabs">
+      <a href="/swipe" class="tab">
+        <i class="fas fa-heart"></i>
+      </a>
+      <a href="/chats" class="active tab">
+        <i class="fas fa-comments"></i>
+      </a>
+      <a href="/profile" class="tab">
+        <i class="fas fa-user"></i>
+      </a>
+    </ul>
+    <div class="new-pairs-and-messages-container" style="overflow-y: scroll">
       <div class="new-pairs-container">
         <div class="container-name">New Pairs</div>
         <div class="new-pairs-fields" style="overflow-y: scroll">
           <div class="new-pair">
-            <div class="new-pair-photo">
-              <img src="../img/profilepics/sophia.jpg" alt="" />
-            </div>
+            <a href="/chat" class="new-pair-photo">
+              <img src="public/img/profilepics/sophia.jpg" alt="" />
+            </a>
             <div class="new-pair-username">Sofia</div>
           </div>
           <div class="new-pair">
             <div class="new-pair-photo">
-              <img src="../img/profilepics/ania.jpg" alt="" />
+              <img src="public/img/profilepics/ania.jpg" alt="" />
             </div>
             <div class="new-pair-username">Ania</div>
           </div>
           <div class="new-pair">
             <div class="new-pair-photo">
-              <img src="../img/profilepics/andzelika.jpg" alt="" />
+              <img src="public/img/profilepics/andzelika.jpg" alt="" />
             </div>
             <div class="new-pair-username">Andżelika</div>
           </div>
           <div class="new-pair">
             <div class="new-pair-photo">
-              <img src="../img/profilepics/kasia.jpg" alt="" />
+              <img src="public/img/profilepics/kasia.jpg" alt="" />
             </div>
             <div class="new-pair-username">Kasia</div>
           </div>
@@ -52,20 +58,23 @@
 
       <div class="messages-container">
         <div class="container-name">Messages</div>
-        <div class="message-container">
+        <a href="/chat" class="message-container">
           <div class="message-container-photo">
-            <img src="../img/profilepics/msg1.png" alt="" />
+            <img src="public/img/profilepics/msg1.png" alt="" />
           </div>
           <div class="message-container-text">
             <h3 class="message-container-username">Emilia</h3>
             <div class="message-container-snippet">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum consequuntur, sunt commodi hic doloribus molestiae iure obcaecati nisi incidunt sapiente omnis, porro in sint sit et unde, saepe reiciendis aperiam?
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum
+              consequuntur, sunt commodi hic doloribus molestiae iure obcaecati
+              nisi incidunt sapiente omnis, porro in sint sit et unde, saepe
+              reiciendis aperiam?
             </div>
           </div>
-        </div>
+        </a>
         <div class="message-container">
           <div class="message-container-photo">
-            <img src="../img/profilepics/msg2.png" alt="" />
+            <img src="public/img/profilepics/msg2.png" alt="" />
           </div>
           <div class="message-container-text">
             <h3 class="message-container-username">Gosia</h3>
@@ -77,7 +86,7 @@
         </div>
         <div class="message-container">
           <div class="message-container-photo">
-            <img src="../img/profilepics/msg3.jpg" alt="" />
+            <img src="public/img/profilepics/msg3.jpg" alt="" />
           </div>
           <div class="message-container-text">
             <h3 class="message-container-username">Justyna</h3>
@@ -89,7 +98,7 @@
         </div>
         <div class="message-container">
           <div class="message-container-photo">
-            <img src="../img/profilepics/msg1.png" alt="" />
+            <img src="public/img/profilepics/msg1.png" alt="" />
           </div>
           <div class="message-container-text">
             <h3 class="message-container-username">Emilia</h3>
@@ -101,7 +110,7 @@
         </div>
         <div class="message-container">
           <div class="message-container-photo">
-            <img src="../img/profilepics/msg2.png" alt="" />
+            <img src="public/img/profilepics/msg2.png" alt="" />
           </div>
           <div class="message-container-text">
             <h3 class="message-container-username">Gosia</h3>
@@ -113,7 +122,7 @@
         </div>
         <div class="message-container">
           <div class="message-container-photo">
-            <img src="../img/profilepics/msg3.jpg" alt="" />
+            <img src="public/img/profilepics/msg3.jpg" alt="" />
           </div>
           <div class="message-container-text">
             <h3 class="message-container-username">Justyna</h3>
@@ -128,7 +137,7 @@
     <script
       src="https://kit.fontawesome.com/8a50b84207.js"
       crossorigin="anonymous"
-      src="../js/app.js"
+      src="public/js/app.js"
     ></script>
   </body>
 </html>

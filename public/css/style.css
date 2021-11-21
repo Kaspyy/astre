@@ -761,7 +761,7 @@ form.sign-up-form {
   color: #1be4a1;
 }
 
-@media (min-width: 820px) {
+@media (min-width: 376px) {
   .photo-and-text-content {
     width: 375px;
     height: 812px;
@@ -775,7 +775,7 @@ form.sign-up-form {
     height: 50%;
   }
 
-  .navbar {
+  .tabs {
     width: 400px;
     margin: 0 auto;
   }
@@ -818,6 +818,7 @@ form.sign-up-form {
 .new-pair {
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 .new-pair-photo {
   width: 74px;
@@ -851,6 +852,10 @@ form.sign-up-form {
   width: 100vw;
   flex-direction: row;
   margin-bottom: 1rem;
+}
+
+.message-container-username {
+  color: #070707;
 }
 
 .message-container-photo {
@@ -904,23 +909,23 @@ form.sign-up-form {
   white-space: nowrap;
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 376px) {
   .tabs {
-    width: 400px;
+    width: 375px;
     display: flex;
     margin: auto;
     justify-content: space-around;
   }
 
   .message-container-snippet {
-    width: 300px;
+    width: 265px;
   }
   .new-pairs-container {
     width: 395px;
     margin: auto;
   }
   .new-pairs-and-messages-container {
-    width: 400px;
+    width: 375px;
     height: 82vh;
     display: flex;
     flex-direction: column;
@@ -931,7 +936,7 @@ form.sign-up-form {
     margin-right: auto;
   }
   .messages-container {
-    width: 395px;
+    width: 375px;
   }
   .message-container {
     width: 390px;
@@ -1033,9 +1038,9 @@ form.sign-up-form {
   color: rgba(136, 136, 136, 0.77);
 }
 
-@media (min-width: 820px) {
+@media (min-width: 376px) {
   .profile-screen-foreground {
-    width: 400px;
+    width: 375px;
     height: 82vh;
     display: flex;
     flex-direction: column;
@@ -1044,8 +1049,9 @@ form.sign-up-form {
     margin-left: auto;
     margin-right: auto;
   }
-  .navbar {
+  .tabs {
     z-index: 1;
+    width: 375px;
   }
   .profile-screen-background {
     /* width: 400px; */
@@ -1170,7 +1176,7 @@ input:focus {
 
 @media (min-width: 376px) {
   .edit-profile-screen-background {
-    width: 400px;
+    width: 375px;
     height: 82vh;
     display: flex;
     flex-direction: column;
@@ -1181,13 +1187,13 @@ input:focus {
   }
 
   #user-bio {
-    width: 400px;
+    width: 375px;
   }
   .settings-screen {
     width: 300px;
   }
   .edit-profile-bio {
-    width: 400px;
+    width: 375px;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -1265,8 +1271,7 @@ input:focus {
 .chat-box .chat p {
   word-wrap: break-word;
   padding: 0.5rem 0.5rem;
-  box-shadow: 0 0 32px rgb(0 0 0/ 8%),
-   0 16px 16px -16px rgb(0 0 0 / 10%);
+  box-shadow: 0 0 32px rgb(0 0 0/ 8%), 0 16px 16px -16px rgb(0 0 0 / 10%);
 }
 
 .chat-box .outgoing {
@@ -1295,7 +1300,7 @@ input:focus {
 }
 
 .incoming .details {
-  margin-left: .5rem;
+  margin-left: 0.5rem;
   margin-right: auto;
   max-width: calc(100% - 130px);
 }
@@ -1316,8 +1321,8 @@ input:focus {
   height: 45px;
   border: none;
   outline: none;
-  background-color:#6401b6;
-  color:#fff;
+  background-color: #6401b6;
+  color: #fff;
   cursor: pointer;
   font-size: 1.2rem;
   border-radius: 0 5px 5px 0;
@@ -1334,7 +1339,7 @@ input:focus {
 
 @media (min-width: 376px) {
   .wrapper {
-    width: 400px;
+    width: 375px;
     height: 82vh;
     display: flex;
     flex-direction: column;

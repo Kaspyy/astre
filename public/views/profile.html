@@ -9,44 +9,49 @@
       rel="stylesheet"
     />
     <title>My profile | Astre</title>
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="public/css/style.css" />
   </head>
   <body>
-    <nav class="navbar">
-      <i class="fas fa-heart"></i>
-      <i class="fas fa-comments"></i>
-      <i class="fas fa-user"></i>
-    </nav>
+    <ul class="tabs">
+      <a href="/swipe" class="tab">
+        <i class="fas fa-heart"></i>
+      </a>
+      <a href="/chats" class="tab">
+        <i class="fas fa-comments"></i>
+      </a>
+      <a href="/profile" class="active tab">
+        <i class="fas fa-user"></i>
+      </a>
+    </ul>
 
-    <div class="profile-screen-background">
-      <div class="profile-screen-foreground">
-        <div class="profile-main-photo-container">
-          <div class="profile-main-photo-background-1">
-            <div class="profile-main-photo-background-2">
-              <div class="profile-main-photo">
-                <div class="user-zodiac-sign">♏︎</div>
-                <img src="../img/profilepics/profile-pic.jpg" alt="" />
-              </div>
+    <div class="profile-screen-foreground">
+      <div class="profile-main-photo-container">
+        <div class="profile-main-photo-background-1">
+          <div class="profile-main-photo-background-2">
+            <div class="profile-main-photo">
+              <div class="user-zodiac-sign">♏︎</div>
+              <img src="public/img/profilepics/profile-pic.jpg" alt="" />
             </div>
           </div>
-          <h2>Mateusz 21</h2>
         </div>
-        <div class="profile-options-panel">
-          <div class="profile-action-container">
-            <div class="action">
-              <i class="fas fa-cog"></i>
-            </div>
-            Settings
-          </div>
-          <div class="profile-action-container">
-            <div class="action">
-              <i class="fas fa-pencil-alt"></i>
-            </div>
-            Edit profile
-          </div>
+        <h2>Mateusz 21</h2>
+      </div>
+      <div class="profile-options-panel">
+        <div class="profile-action-container">
+          <a href="/settings" class="action">
+            <i class="fas fa-cog"></i>
+          </a>
+          Settings
+        </div>
+        <div class="profile-action-container">
+          <a href="/edit_profile" class="action">
+            <i class="fas fa-pencil-alt"></i>
+          </a>
+          Edit profile
         </div>
       </div>
     </div>
+  </div>
 
     <script
       src="https://kit.fontawesome.com/8a50b84207.js"

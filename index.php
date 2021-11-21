@@ -9,5 +9,9 @@ Router::get('', 'DefaultController');
 Router::get('astre', 'DefaultController');
 Router::get('settings', 'DefaultController');
 Router::get('edit_profile', 'DefaultController');
+Router::get('swipe', 'DefaultController');
+Router::get('chats','DefaultController');
+Router::get('profile', 'DefaultController');
+Router::get('chat', 'DefaultController');
 
 Router::run($path);

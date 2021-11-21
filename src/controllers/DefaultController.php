@@ -9,10 +9,27 @@ class DefaultController extends AppController {
         $this->render('login');
     }
 
-    public function astre()
+    public function swipe()
     {
-        $this->render('astre');
+        $this->render('swipe');
     }
+
+    public function chats()
+    {
+        $this->render('chats');
+    }
+    public function profile()
+    {
+        $this->render('profile');
+    }
+    public function chat()
+    {
+        $this->render('chat');
+    }
+    // public function astre()
+    // {
+    //     $this->render('astre');
+    // }
     public function settings()
     {
         $this->render('settings');
