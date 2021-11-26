@@ -24,7 +24,7 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="#" class="sign-in-form">
+          <form action="login" class="sign-in-form" method="POST">
             <div class="logo">
               <img src="public/img/logo.svg" />
             </div>
@@ -32,13 +32,21 @@
               <img src="public/img/logo_mobile.png" />
             </div>
             <h2 class="title">Sign in</h2>
+              <div class="messages">
+                  <?php if (isset($messages)) {
+                      foreach ($messages as $message) {
+                          echo $message;
+                      }
+                  }
+                  ?>
+              </div>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="text" placeholder="Email" />
+              <input name="email" type="text" placeholder="Email" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input name="password" type="password" placeholder="Password" />
             </div>
             <input type="submit" class="btn solid" value="Sign in" />
             <p class="social-text">Or Sign in with social platforms</p>

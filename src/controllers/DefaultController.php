@@ -6,7 +6,12 @@ class DefaultController extends AppController {
 
     public function index()
     {
-        $this->render('login');
+        $this->render('login', ['message'=>"Hello World!"]);
+    }
+
+    public function astre()
+    {
+        $this->render('astre');
     }
 
     public function swipe()
@@ -26,10 +31,6 @@ class DefaultController extends AppController {
     {
         $this->render('chat');
     }
-    // public function astre()
-    // {
-    //     $this->render('astre');
-    // }
     public function settings()
     {
         $this->render('settings');

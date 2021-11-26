@@ -15,7 +15,7 @@
     <div class="edit-profile-screen-background" style="overflow-y: scroll;">
       <nav class="navbar">
         <h2>EDIT PROFILE</h2>
-        <a href="/astre" class="done-button">Done</a>
+        <a href="/profile" class="done-button">Done</a>
       </nav>
         <div class="edit-profile-photos-container">
           <div class="edit-profile-photo-container">
@@ -66,6 +66,15 @@
           <h4>Gender</h4>
           <div class="edit-profile-choose-container">
             Man
+            <div class="arrow-button">
+              <i class="fas fa-chevron-right"></i>
+            </div>
+          </div>
+        </div>
+        <div class="edit-profile-choose">
+          <h4>Interested in</h4>
+          <div class="edit-profile-choose-container">
+            Women
             <div class="arrow-button">
               <i class="fas fa-chevron-right"></i>
             </div>

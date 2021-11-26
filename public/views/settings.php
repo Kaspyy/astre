@@ -15,7 +15,7 @@
     <div class="edit-profile-screen-background">
       <nav class="navbar">
         <h2>SETTINGS</h2>
-        <a href="/astre" class="done-button">Done</a>
+        <a href="/profile" class="done-button">Done</a>
       </nav>
         <div class="settings-screen">
             <h3>Name</h3>
