@@ -18,15 +18,15 @@
     </nav>
     <div class="edit-profile-photos-container">
       <div class="edit-profile-photo-container">
-        <img src="public/img/profilepics/profile-pic.jpg" alt="" />
+        <img src="public/uploads/<?= $userPhoto->getPhoto() ?>" />
         <div class="action-remove">
           <i class="fas fa-times"></i>
         </div>
       </div>
       <div class="edit-profile-photo-container">
-        <div class="action-add">
-          <i class="fas fa-plus"></i>
-        </div>
+            <div class="action-add">
+              <i class="fas fa-plus"></i>
+            </div>
       </div>
       <div class="edit-profile-photo-container">
         <div class="action-add">

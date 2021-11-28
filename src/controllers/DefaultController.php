@@ -9,11 +9,6 @@ class DefaultController extends AppController {
         $this->render('login', ['message'=>"Hello World!"]);
     }
 
-    public function astre()
-    {
-        $this->render('astre');
-    }
-
     public function swipe()
     {
         $this->render('swipe');
