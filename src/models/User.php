@@ -5,18 +5,15 @@ class User
     private $email;
     private $password;
     private $name;
-    private $bio;
-    private $gender;
-    private $interest;
+    private $surname;
 
-    public function __construct($email, $password, $name, $bio, $gender, $interest)
+
+    public function __construct($email, $password, $name, $surname)
     {
         $this->email = $email;
         $this->password = $password;
         $this->name = $name;
-        $this->bio = $bio;
-        $this->gender = $gender;
-        $this->interest = $interest;
+        $this->surname = $surname;
     }
 
 
@@ -30,42 +27,6 @@ class User
     {
         $this->name = $name;
     }
-
-    public function getBio():string
-    {
-        return $this->bio;
-    }
-
-
-    public function setBio(string $bio)
-    {
-        $this->bio = $bio;
-    }
-
-
-    public function getGender()
-    {
-        return $this->gender;
-    }
-
-
-    public function setGender($gender)
-    {
-        $this->gender = $gender;
-    }
-
-
-    public function getInterest()
-    {
-        return $this->interest;
-    }
-
-
-    public function setInterest($interest)
-    {
-        $this->interest = $interest;
-    }
-
 
     public function getEmail(): string
     {
