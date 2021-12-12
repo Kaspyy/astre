@@ -18,22 +18,10 @@
     </nav>
     <div class="edit-profile-photos-container">
       <div class="edit-profile-photo-container">
-        <img src="public/uploads/<?= $userPhoto->getPhoto() ?>" />
-        <div class="action-remove">
-          <i class="fas fa-times"></i>
-        </div>
-      </div>
-      <div class="edit-profile-photo-container">
-            <div class="action-add">
-              <i class="fas fa-plus"></i>
-            </div>
-      </div>
-      <div class="edit-profile-photo-container">
-        <div class="action-add">
-          <i class="fas fa-plus"></i>
-        </div>
+        <img src="public/uploads/<?= $userPhoto->getPhoto() ?>" >
       </div>
     </div>
+    <a href="/uploadPhoto"><button class="edit_profile_btn"><i class="fas fa-upload"></i></button></a>
     <div class="edit-profile-bio">
       <h4>About me</h4>
       <textarea id="user-bio" name="bio" maxlength="250" placeholder="Tell something about yourself."></textarea>

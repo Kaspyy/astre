@@ -922,7 +922,7 @@ form.sign-up-form {
   }
   .new-pairs-container {
     width: 395px;
-    margin: .5rem auto;
+    margin: 0.5rem auto;
   }
   .new-pairs-and-messages-container {
     width: 375px;
@@ -1092,13 +1092,13 @@ form.sign-up-form {
 .edit-profile-photos-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   margin: 1rem 0.5rem;
 }
 .edit-profile-photo-container {
   background-color: #57575723;
-  height: 170px;
-  width: 110px;
+  height: 410px;
+  width: 360px;
   border-radius: 5px;
   position: relative;
 }
@@ -1148,6 +1148,22 @@ form.sign-up-form {
 .edit-profile-screen-background h4 {
   margin: 1rem 0.5rem 0.2rem;
 }
+
+.edit_profile_btn {
+  width: 150px;
+  height: 49px;
+  outline: none;
+  border: none;
+  border-radius: 48px;
+  background-color: #7a00ac;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-left: 110px;
+  transition: all 0.5s;
+  font-size: 1.4rem;
+  padding: 10px;
+}
 textarea {
   width: 100vw;
   height: 300px;
@@ -1185,6 +1201,7 @@ input:focus {
     margin-left: auto;
     margin-right: auto;
   }
+
 
   #user-bio {
     width: 375px;
@@ -1358,8 +1375,7 @@ input:focus {
   width: 100%;
 }
 
-
-.select-gender-wrapper{
+.select-gender-wrapper {
   display: inline-flex;
   background: #fff;
   height: 100px;
@@ -1367,9 +1383,9 @@ input:focus {
   align-items: center;
   justify-content: space-evenly;
   padding: 20px 15px;
-  box-shadow: 5px 5px 30px rgba(0,0,0,0.2);
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
 }
-.select-gender-wrapper .option{
+.select-gender-wrapper .option {
   background: #fff;
   height: 100%;
   width: 100%;
@@ -1383,14 +1399,14 @@ input:focus {
   border: 2px solid lightgrey;
   transition: all 0.3s ease;
 }
-.select-gender-wrapper .option .dot{
+.select-gender-wrapper .option .dot {
   height: 20px;
   width: 20px;
   background: #d9d9d9;
   border-radius: 50%;
   position: relative;
 }
-.select-gender-wrapper .option .dot::before{
+.select-gender-wrapper .option .dot::before {
   position: absolute;
   content: "";
   top: 4px;
@@ -1403,29 +1419,29 @@ input:focus {
   transform: scale(1.5);
   transition: all 0.3s ease;
 }
-input[type="radio"]{
+input[type="radio"] {
   display: none;
 }
 #option-1:checked:checked ~ .option-1,
-#option-2:checked:checked ~ .option-2{
+#option-2:checked:checked ~ .option-2 {
   border-color: #8b1fe2;
   background: #8b1fe2;
 }
 #option-1:checked:checked ~ .option-1 .dot,
-#option-2:checked:checked ~ .option-2 .dot{
+#option-2:checked:checked ~ .option-2 .dot {
   background: #fff;
 }
 #option-1:checked:checked ~ .option-1 .dot::before,
-#option-2:checked:checked ~ .option-2 .dot::before{
+#option-2:checked:checked ~ .option-2 .dot::before {
   opacity: 1;
   transform: scale(1);
 }
-.select-gender-wrapper .option span{
+.select-gender-wrapper .option span {
   font-size: 1.1rem;
   color: #808080;
 }
 #option-1:checked:checked ~ .option-1 span,
-#option-2:checked:checked ~ .option-2 span{
+#option-2:checked:checked ~ .option-2 span {
   color: #fff;
 }
 
@@ -1434,7 +1450,7 @@ input[type="radio"]{
   vertical-align: top;
   background: #fff;
   text-align: left;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   padding: 30px;
   width: 100%;
 }
@@ -1483,7 +1499,7 @@ input[type="radio"]{
   pointer-events: none;
 }
 .control__indicator:after {
-  content: '';
+  content: "";
   position: absolute;
   display: none;
 }

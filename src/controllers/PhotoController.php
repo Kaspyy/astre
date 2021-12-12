@@ -20,6 +20,7 @@ class PhotoController extends AppController
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
 
+            // TODO create new user photo object and save it in database
             $userPhoto = new UserPhoto($_FILES['file']['name']);
 
             return $this->render('edit_profile', ['messages' => $this->messages, 'userPhoto' => $userPhoto] );
