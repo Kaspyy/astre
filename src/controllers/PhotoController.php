@@ -2,6 +2,7 @@
 
 require_once 'AppController.php';
 require_once __DIR__.'/../models/UserPhoto.php';
+require_once __DIR__.'/../repository/UserPhotoRepository.php';
 
 class PhotoController extends AppController
 {
@@ -10,6 +11,13 @@ class PhotoController extends AppController
     const UPLOAD_DIRECTORY = '/../public/uploads/';
 
     private $messages = [];
+    private $userPhotoRepository;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->userPhotoRepository = new UserPhotoRepository();
+    }
 
     public function uploadPhoto()
     {
@@ -22,6 +30,7 @@ class PhotoController extends AppController
 
             // TODO create new user photo object and save it in database
             $userPhoto = new UserPhoto($_FILES['file']['name']);
+            $this->userPhotoRepository->addPhoto($userPhoto);
 
             return $this->render('edit_profile', ['messages' => $this->messages, 'userPhoto' => $userPhoto] );
         }
