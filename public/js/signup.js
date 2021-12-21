@@ -1,15 +1,41 @@
-const form = document.querySelector(".sign-up-form"),
-continueBtn = form.querySelector(".sign-up-form input[class='btn solid']");
+const form = document.querySelector(".sign-up-form");
+const emailInputField = form.querySelector(".input-field");
+const emailInput = form.querySelector('input[name = "email"]');
+const confirmPasswordInputField = form.querySelector("#rePasswordInput");
+const passwordInput = form.querySelector('input[name = "password"]');
+const confirmPasswordInput = form.querySelector('input[name = "re_password"]');
 
-form.onsubmit = (e) => {
-    e.preventDefault(); //preventing from form submitting
+function isEmail(email) {
+    return /\S+@\S+\.\S+/.test(email);
 }
 
-continueBtn.onclick = () => {
-    let xhr = new XMLHttpRequest(); //creating XML object
-    xhr.open("POST", "src/controllers/SignUpController.php", true);
-    xhr.onload = () => {
-
-    }
-    xhr.send();
+function arePasswordsSame(password, re_password) {
+    return password === re_password;
 }
+
+function markValidation(element, condition) {
+    !condition ? element.classList.add('no-valid') : element.classList.remove('no-valid');
+}
+
+emailInput.addEventListener('keyup', function() {
+    setTimeout(function() {
+        markValidation(emailInputField, isEmail(emailInput.value));
+    },
+        1000
+    )
+});
+
+confirmPasswordInput.addEventListener('keyup', function() {
+    setTimeout(function() {
+        console.log("password event");
+        const condition = arePasswordsSame(
+            passwordInput.value,
+            confirmPasswordInput.value
+        );
+        console.log (passwordInput.value, confirmPasswordInput.value);
+        console.log (condition);
+        markValidation(confirmPasswordInputField, condition);
+    },
+        1000
+    );
+});

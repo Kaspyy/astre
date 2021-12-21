@@ -3,7 +3,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 body,
 input {
   font-family: "Poppins", sans-serif;
@@ -1517,4 +1516,8 @@ input[type="radio"] {
 }
 .control--checkbox input:disabled ~ .control__indicator:after {
   border-color: #7b7b7b;
+}
+
+.no-valid {
+  border: 3px solid #ff3c3c !important;
 }

@@ -29,8 +29,9 @@
         <div class="profile-main-photo-background-1">
           <div class="profile-main-photo-background-2">
             <div class="profile-main-photo">
+
               <div class="user-zodiac-sign">♏︎</div>
-              <img src="public/img/profilepics/profile-pic.jpg" alt="" />
+              <img src="public/uploads/<?= $userPhoto->getPhoto() ?>" alt="" />
             </div>
           </div>
         </div>

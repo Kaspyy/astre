@@ -76,7 +76,7 @@
             <i class="fas fa-lock"></i>
             <input name="password" type="password" placeholder="Password" />
           </div>
-          <div class="input-field">
+          <div class="input-field" id="rePasswordInput">
             <i class="fas fa-lock"></i>
             <input name="re_password" type="password" placeholder="Repeat password" />
           </div>
@@ -114,6 +114,6 @@
       </div>
     </div>
     <script src="public/js/app.js"></script>
-    <script src="public/js/signup.js"></script>
+    <script src="public/js/signup.js" defer></script>
   </body>
 </html>

@@ -19,6 +19,18 @@ class PhotoController extends AppController
         $this->userPhotoRepository = new UserPhotoRepository();
     }
 
+    public function profile()
+    {
+        $userPhoto = $this->userPhotoRepository->getPhoto(1);
+        $this->render('profile', ['userPhoto' => $userPhoto]);
+    }
+
+    public function edit_profile()
+    {
+        $userPhoto = $this->userPhotoRepository->getPhoto(1);
+        $this->render('edit_profile', ['userPhoto' => $userPhoto]);
+    }
+
     public function uploadPhoto()
     {
         if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) & $this->validate($_FILES['file']))
@@ -28,7 +40,6 @@ class PhotoController extends AppController
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
 
-            // TODO create new user photo object and save it in database
             $userPhoto = new UserPhoto($_FILES['file']['name']);
             $this->userPhotoRepository->addPhoto($userPhoto);
 

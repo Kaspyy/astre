@@ -18,10 +18,6 @@ class DefaultController extends AppController {
     {
         $this->render('chats');
     }
-    public function profile()
-    {
-        $this->render('profile');
-    }
     public function chat()
     {
         $this->render('chat');
@@ -29,10 +25,6 @@ class DefaultController extends AppController {
     public function settings()
     {
         $this->render('settings');
-    }
-    public function edit_profile()
-    {
-        $this->render('edit_profile');
     }
     public function select_gender()
     {
