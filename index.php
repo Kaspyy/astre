@@ -16,6 +16,7 @@ Router::get('select_gender', 'DefaultController');
 Router::get('interested_in', 'DefaultController');
 Router::get('select_hobbies','DefaultController');
 Router::post('login', 'SecurityController');
+Router::post('register', 'SecurityController');
 Router::post('uploadPhoto', 'PhotoController');
 
 Router::run($path);

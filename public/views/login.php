@@ -52,7 +52,7 @@
             </a>
           </div>
         </form>
-        <form action="login" class="sign-up-form" method="post">
+        <form action="register" class="sign-up-form" method="post">
           <div class="logo">
             <img src="public/img/logo.svg" />
           </div>

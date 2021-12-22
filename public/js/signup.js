@@ -27,13 +27,10 @@ emailInput.addEventListener('keyup', function() {
 
 confirmPasswordInput.addEventListener('keyup', function() {
     setTimeout(function() {
-        console.log("password event");
         const condition = arePasswordsSame(
             passwordInput.value,
             confirmPasswordInput.value
         );
-        console.log (passwordInput.value, confirmPasswordInput.value);
-        console.log (condition);
         markValidation(confirmPasswordInputField, condition);
     },
         1000
