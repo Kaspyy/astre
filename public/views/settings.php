@@ -17,13 +17,13 @@
         <h2>SETTINGS</h2>
         <a href="/profile" class="done-button">Done</a>
       </nav>
-        <div class="settings-screen">
+        <form class="settings-screen" action="updateUserDetails" method="post">
             <h3>Name</h3>
             <input type="text"
-            class="input" value="Jane">
+            class="input" name="name" value=<?= $userDetails->getName() ?>>
             <h3>Birthday</h3>
             <input type="date"
-            class="input">
+             class="input" name="birthday" value="<?= $userDetails->getBirthday() ?>">
             <h3>Email</h3>
             <input type="text"
             class="input"
@@ -33,8 +33,8 @@
             class="input"
             value="brightcode">
             <button
-            class="btn">Update</button>
-        </div>
+            class="btn" type="submit">Update</button>
+        </form>
     </div>
     </div>
     <script

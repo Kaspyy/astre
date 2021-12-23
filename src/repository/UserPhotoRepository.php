@@ -35,6 +35,7 @@ class UserPhotoRepository extends Repository
             $userPhoto->getPhoto()
         ]);
     }
+
     public function getPhotos(): array
     {
         $result = [];
@@ -52,4 +53,5 @@ class UserPhotoRepository extends Repository
         }
         return $result;
     }
+
 }

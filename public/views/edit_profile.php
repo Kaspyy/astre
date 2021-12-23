@@ -24,9 +24,7 @@
     <a href="/uploadPhoto"><button class="edit_profile_btn"><i class="fas fa-upload"></i></button></a>
     <div class="edit-profile-bio">
       <h4>About me</h4>
-      <textarea id="user-bio" name="bio" maxlength="250" placeholder="Tell something about yourself.">
-
-      </textarea>
+      <textarea id="user-bio" name="bio" maxlength="250" placeholder="Tell something about yourself."></textarea>
     </div>
     <div class="edit-profile-choose">
       <h4>Hobbies</h4>
@@ -70,7 +68,8 @@
         </div>
       </a>
     </div>
-  </div>
+      <button
+              class="edit_profile_btn" type="submit">Update</button>
   </div>
   <script src="https://kit.fontawesome.com/8a50b84207.js" crossorigin="anonymous"></script>
 </body>

@@ -58,6 +58,6 @@ class SecurityController extends AppController
 
         $this->userRepository->addUser($user);
 
-        return $this->render('login', ['messages' => ['You\'ve been succesfully registered!']]);
+        return $this->render('settings', ['messages' => ['You\'ve been succesfully registered!']]);
     }
 }

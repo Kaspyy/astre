@@ -35,7 +35,7 @@
             </div>
           </div>
         </div>
-        <h2>Mateusz 21</h2>
+        <h2><?= $userDetails->getName() ?> <?= $userDetails->getAge() ?></h2>
       </div>
       <div class="profile-options-panel">
         <div class="profile-action-container">

@@ -6,17 +6,18 @@ $path = trim($_SERVER['REQUEST_URI'], '/');
 $path = parse_url( $path, PHP_URL_PATH);
 
 Router::get('', 'DefaultController');
-Router::get('settings', 'DefaultController');
-Router::get('edit_profile', 'PhotoController');
+Router::get('edit_profile', 'UserInfoController');
+Router::get('settings', 'UserInfoController');
 Router::get('swipe', 'DefaultController');
 Router::get('chats','DefaultController');
-Router::get('profile', 'PhotoController');
+Router::get('profile', 'UserInfoController');
 Router::get('chat', 'DefaultController');
 Router::get('select_gender', 'DefaultController');
 Router::get('interested_in', 'DefaultController');
 Router::get('select_hobbies','DefaultController');
 Router::post('login', 'SecurityController');
 Router::post('register', 'SecurityController');
-Router::post('uploadPhoto', 'PhotoController');
+Router::post('uploadPhoto', 'UserInfoController');
+Router::post('updateUserDetails', 'UserInfoController');
 
 Router::run($path);

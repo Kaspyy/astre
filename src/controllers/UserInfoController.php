@@ -3,8 +3,10 @@
 require_once 'AppController.php';
 require_once __DIR__.'/../models/UserPhoto.php';
 require_once __DIR__.'/../repository/UserPhotoRepository.php';
+require_once __DIR__.'/../models/UserDetails.php';
+require_once __DIR__.'/../repository/UserDetailsRepository.php';
 
-class PhotoController extends AppController
+class UserInfoController extends AppController
 {
     const MAX_FILE_SIZE = 1024*1024;
     const SUPPORTED_TYPES = ['image/png', 'image/jpeg'];
@@ -12,17 +14,20 @@ class PhotoController extends AppController
 
     private $messages = [];
     private $userPhotoRepository;
+    private $userDetailsRepository;
 
     public function __construct()
     {
         parent::__construct();
         $this->userPhotoRepository = new UserPhotoRepository();
+        $this->userDetailsRepository = new UserDetailsRepository();
     }
 
     public function profile()
     {
         $userPhoto = $this->userPhotoRepository->getPhoto(1);
-        $this->render('profile', ['userPhoto' => $userPhoto]);
+        $userDetails = $this->userDetailsRepository->getUserDetails(1);
+        $this->render('profile', ['userPhoto' => $userPhoto, 'userDetails' => $userDetails]);
     }
 
     public function edit_profile()
@@ -62,6 +67,22 @@ class PhotoController extends AppController
             return false;
         }
         return true;
+    }
+
+    public function updateUserDetails()
+    {
+        $userDetails = new UserDetails($_POST['name'], $_POST['birthday']);
+        $this->userDetailsRepository->updateUserDetails($userDetails);
+
+        return $this->render('settings', [
+            'messages' => $this->message,
+            'userDetails' => $this->userDetailsRepository->getUserDetails(1)
+        ]);
+    }
+    public function settings()
+    {
+        $userDetails = $this->userDetailsRepository->getUserDetails(1);
+        $this->render('settings', ['userDetails' => $userDetails]);
     }
 
 }

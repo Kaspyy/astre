@@ -22,10 +22,6 @@ class DefaultController extends AppController {
     {
         $this->render('chat');
     }
-    public function settings()
-    {
-        $this->render('settings');
-    }
     public function select_gender()
     {
         $this->render('select_gender');
