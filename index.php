@@ -19,5 +19,6 @@ Router::post('login', 'SecurityController');
 Router::post('register', 'SecurityController');
 Router::post('uploadPhoto', 'UserInfoController');
 Router::post('updateUserDetails', 'UserInfoController');
+Router::post('updateUserBio', 'UserInfoController');
 
 Router::run($path);

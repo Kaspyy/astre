@@ -24,6 +24,7 @@ class UserRepository extends Repository
             $user['password'],
         );
     }
+
     public function addUser(User $user)
     {
         $stmt = $this->database->connect()->prepare('

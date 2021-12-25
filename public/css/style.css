@@ -1165,6 +1165,10 @@ form.sign-up-form {
   font-size: 1.4rem;
   padding: 10px;
 }
+.edit_profile_btn:hover {
+  cursor: pointer;
+}
+
 textarea {
   width: 100vw;
   height: 300px;
@@ -1173,6 +1177,7 @@ textarea {
   font-size: 0.9rem;
   letter-spacing: 1px;
   padding: 10px;
+  resize: none;
 }
 
 textarea:focus,
