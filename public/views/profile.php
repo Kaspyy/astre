@@ -30,7 +30,7 @@
           <div class="profile-main-photo-background-2">
             <div class="profile-main-photo">
 
-              <div class="user-zodiac-sign">♏︎</div>
+              <div class="user-zodiac-sign"><?= $userDetails->getZodiacSign() ?></div>
               <img src="public/uploads/<?= $userPhoto->getPhoto() ?>" alt="" />
             </div>
           </div>
