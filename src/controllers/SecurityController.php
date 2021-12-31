@@ -3,15 +3,18 @@
 require_once 'AppController.php';
 require_once __DIR__.'/../models/User.php';
 require_once __DIR__.'/../repository/UserRepository.php';
+require_once __DIR__.'/../controllers/UserInfoController.php';
 
 class SecurityController extends AppController
 {
     private $userRepository;
+    private $userInfoController;
 
     public function __construct()
     {
         parent::__construct();
         $this->userRepository = new UserRepository();
+        $this->userInfoController = new UserInfoController();
         session_start();
     }
 
@@ -49,20 +52,26 @@ class SecurityController extends AppController
         }
 
         $email = $_POST['email'];
+        $name = $_POST['name'];
+        $birthday = $_POST['birthday'];
         $password = $_POST['password'];
         $confirmPassword = $_POST['re_password'];
 
         if ($password !== $confirmPassword) {
             return $this->render('login', ['messages' => ['Please provide proper password']]);
         }
+        if ($name == null) {
+            return $this->render('login', ['messages' => ['Name field cannot be empty']]);
+        }
 
         //TODO try to use better hash function
-        $user = new User($email, md5($password));
+        $user = new User($email, md5($password), uniqid());
+        $userDetails = new UserDetails($name, $birthday);
 
-        $this->userRepository->addUser($user);
+        $this->userRepository->addUser($user, $userDetails);
 
         $_SESSION['id'] = $user->getId();
 
-        return $this->render('settings', ['messages' => ['You\'ve been succesfully registered!']]);
+        $this->render($this->login());
     }
 }

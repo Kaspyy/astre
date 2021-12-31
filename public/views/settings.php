@@ -26,12 +26,9 @@
              class="input" name="birthday" value="<?= $userDetails->getBirthday() ?>">
             <h3>Email</h3>
             <input type="text"
-            class="input"
-            value="example@example.com">
+            class="input" name="email" value="<?= $user->getEmail() ?>">
             <h3>Password</h3>
-            <input type="password"
-            class="input"
-            value="brightcode">
+            <input type="password" class="input" name="password" value="<?= $user->getPassword() ?>">
             <button
             class="btn" type="submit">Update</button>
         </form>

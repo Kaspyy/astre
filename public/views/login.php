@@ -72,6 +72,14 @@
             <i class="fas fa-envelope"></i>
             <input name="email" type="text" placeholder="Email" />
           </div>
+            <div class="input-field">
+                <i class="fas fa-user"></i>
+                <input name="name" type="text" placeholder="Name" />
+            </div>
+            <div class="input-field">
+                <i class="far fa-calendar-alt"></i>
+                <input name="birthday" type="date" />
+            </div>
           <div class="input-field">
             <i class="fas fa-lock"></i>
             <input name="password" type="password" placeholder="Password" />

@@ -7,6 +7,7 @@ require_once __DIR__.'/../repository/UserPhotoRepository.php';
 require_once __DIR__.'/../models/UserDetails.php';
 require_once __DIR__.'/../models/UserBio.php';
 require_once __DIR__.'/../repository/UserDetailsRepository.php';
+require_once __DIR__.'/../repository/UserRepository.php';
 
 class UserInfoController extends AppController
 {
@@ -18,12 +19,14 @@ class UserInfoController extends AppController
     private $userPhotoRepository;
     private $userDetailsRepository;
     private int $id;
+    private $userRepository;
 
     public function __construct()
     {
         parent::__construct();
         $this->userPhotoRepository = new UserPhotoRepository();
         $this->userDetailsRepository = new UserDetailsRepository();
+        $this->userRepository = new UserRepository();
         session_start();
 //        var_dump($_SESSION['id']);
         $this->id = $_SESSION['id'];
@@ -55,9 +58,7 @@ class UserInfoController extends AppController
             $userPhoto = new UserPhoto($_FILES['file']['name']);
             $this->userPhotoRepository->addPhoto($userPhoto, $this->id);
 
-            return $this->render(
-                'edit_profile', ['messages' => $this->messages, 'userPhoto' => $userPhoto]
-            );
+            return $this->edit_profile();
         }
         $this->render('upload_photo', ['messages' => $this->messages]);
     }
@@ -81,14 +82,16 @@ class UserInfoController extends AppController
     public function updateUserDetails()
     {
         $userDetails = new UserDetails($_POST['name'], $_POST['birthday']);
-        $this->userDetailsRepository->updateUserDetails($userDetails, $this->id);
+        $user = new User($_POST['email'], $_POST['password'], $this->id);
+        $this->userDetailsRepository->updateUserDetails($user, $userDetails, $this->id);
 
         $this->settings();
     }
     public function settings()
     {
         $userDetails = $this->userDetailsRepository->getUserDetails($this->id);
-        $this->render('settings', ['userDetails' => $userDetails]);
+        $user = $this->userRepository->getUserById($this->id);
+        $this->render('settings', ['userDetails' => $userDetails, 'user' =>$user]);
     }
 
     public function updateUserBio()
