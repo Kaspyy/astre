@@ -26,15 +26,20 @@ class UserDetailsRepository extends Repository
         );
     }
 
-    public function updateUserDetails(UserDetails $userDetails): void
+    public function updateUserDetails(UserDetails $userDetails, int $id): void
     {
-        $stmt = $this->database->connect()->prepare('
-        UPDATE user_account SET name = :name, birthday = :birthday where id = 1');
+        $name = $userDetails->getName();
+        $birthday = $userDetails->getBirthday();
 
-        $stmt->execute([
-            $userDetails->getName(),
-            $userDetails->getBirthday()
-        ]);
+        $stmt = $this->database->connect()->prepare('
+        UPDATE user_account SET name = :name, birthday = :birthday where id = :id');
+
+
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':birthday', $birthday);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+        $stmt->execute();
     }
 
     public function getUserBio(int $id): ?UserBio
@@ -56,14 +61,15 @@ class UserDetailsRepository extends Repository
         );
     }
 
-    public function updateUserBio(UserBio $userBio): void
+    public function updateUserBio(UserBio $userBio, int $id): void
     {
         $stmt = $this->database->connect()->prepare('
-        UPDATE user_account SET bio = :bio where id = 1');
+        UPDATE user_account SET bio = :bio where id = :id');
 
-        $stmt->execute([
-            $userBio->getBio()
-        ]);
+        $bio = $userBio->getBio();
+        $stmt->bindParam(':bio', $bio);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
     }
 
 }

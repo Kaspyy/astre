@@ -5,12 +5,12 @@ require_once __DIR__."/../models/User.php";
 
 class UserPhotoRepository extends Repository
 {
-    public function getPhoto(int $id): ?UserPhoto
+    public function getPhoto(int $user_account_id): ?UserPhoto
     {
         $stmt = $this->database->connect()->prepare(
-            "SELECT * FROM user_photo WHERE id = :id"
+            "SELECT * FROM user_photo WHERE user_account_id = :user_account_id"
         );
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':user_account_id', $user_account_id, PDO::PARAM_INT);
         $stmt->execute();
 
         $userPhoto = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -24,16 +24,15 @@ class UserPhotoRepository extends Repository
         );
     }
 
-    public function addPhoto(UserPhoto $userPhoto): void
+    public function addPhoto(UserPhoto $userPhoto, int $user_account_id): void
     {
         $stmt = $this->database->connect()->prepare('
-        INSERT INTO user_photo (user_account_id, photo) values (?, ?)');
+        UPDATE user_photo SET photo = :userPhoto WHERE user_account_id = :user_account_id');
 
-        $user_account_id = 1;
-        $stmt->execute([
-            $user_account_id,
-            $userPhoto->getPhoto()
-        ]);
+        $photo = $userPhoto->getPhoto();
+        $stmt->bindParam(':user_account_id', $user_account_id, PDO::PARAM_INT);
+        $stmt->bindParam(':userPhoto', $photo);
+        $stmt->execute();
     }
 
     public function getPhotos(): array

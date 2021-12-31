@@ -22,6 +22,7 @@ class UserRepository extends Repository
         return new User(
             $user['email'],
             $user['password'],
+            $user['id']
         );
     }
 
@@ -35,6 +36,14 @@ class UserRepository extends Repository
         $stmt->execute([
             $user->getEmail(),
             $user->getPassword(),
+        ]);
+
+        $stmt = $this->database->connect()->prepare('
+            INSERT INTO user_photo (user_account_id) VALUE (?)
+        ');
+
+        $stmt->execute([
+           $user->getId()
         ]);
     }
 

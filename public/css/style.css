@@ -1024,6 +1024,7 @@ form.sign-up-form {
   align-items: center;
   flex-direction: column;
   position: relative;
+  object-fit: cover;
 }
 
 .profile-options-panel {

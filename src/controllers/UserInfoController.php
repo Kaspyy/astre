@@ -1,6 +1,7 @@
 <?php
 
 require_once 'AppController.php';
+require_once __DIR__.'/../models/User.php';
 require_once __DIR__.'/../models/UserPhoto.php';
 require_once __DIR__.'/../repository/UserPhotoRepository.php';
 require_once __DIR__.'/../models/UserDetails.php';
@@ -16,25 +17,29 @@ class UserInfoController extends AppController
     private $messages = [];
     private $userPhotoRepository;
     private $userDetailsRepository;
+    private int $id;
 
     public function __construct()
     {
         parent::__construct();
         $this->userPhotoRepository = new UserPhotoRepository();
         $this->userDetailsRepository = new UserDetailsRepository();
+        session_start();
+//        var_dump($_SESSION['id']);
+        $this->id = $_SESSION['id'];
     }
 
     public function profile()
     {
-        $userPhoto = $this->userPhotoRepository->getPhoto(1);
-        $userDetails = $this->userDetailsRepository->getUserDetails(1);
+        $userPhoto = $this->userPhotoRepository->getPhoto($this->id);
+        $userDetails = $this->userDetailsRepository->getUserDetails($this->id);
         $this->render('profile', ['userPhoto' => $userPhoto, 'userDetails' => $userDetails]);
     }
 
     public function edit_profile()
     {
-        $userPhoto = $this->userPhotoRepository->getPhoto(1);
-        $userBio = $this->userDetailsRepository->getUserBio(1);
+        $userPhoto = $this->userPhotoRepository->getPhoto($this->id);
+        $userBio = $this->userDetailsRepository->getUserBio($this->id);
         $this->render('edit_profile', ['userPhoto' => $userPhoto, 'userBio' => $userBio]);
     }
 
@@ -48,9 +53,11 @@ class UserInfoController extends AppController
             );
 
             $userPhoto = new UserPhoto($_FILES['file']['name']);
-            $this->userPhotoRepository->addPhoto($userPhoto);
+            $this->userPhotoRepository->addPhoto($userPhoto, $this->id);
 
-            return $this->render('edit_profile', ['messages' => $this->messages, 'userPhoto' => $userPhoto]);
+            return $this->render(
+                'edit_profile', ['messages' => $this->messages, 'userPhoto' => $userPhoto]
+            );
         }
         $this->render('upload_photo', ['messages' => $this->messages]);
     }
@@ -74,28 +81,22 @@ class UserInfoController extends AppController
     public function updateUserDetails()
     {
         $userDetails = new UserDetails($_POST['name'], $_POST['birthday']);
-        $this->userDetailsRepository->updateUserDetails($userDetails);
+        $this->userDetailsRepository->updateUserDetails($userDetails, $this->id);
 
-        return $this->render('settings', [
-            'messages' => $this->message,
-            'userDetails' => $this->userDetailsRepository->getUserDetails(1)
-        ]);
+        $this->settings();
     }
     public function settings()
     {
-        $userDetails = $this->userDetailsRepository->getUserDetails(1);
+        $userDetails = $this->userDetailsRepository->getUserDetails($this->id);
         $this->render('settings', ['userDetails' => $userDetails]);
     }
 
     public function updateUserBio()
     {
         $userBio = new UserBio($_POST['bio']);
-        $this->userDetailsRepository->updateUserBio($userBio);
+        $this->userDetailsRepository->updateUserBio($userBio, $this->id);
 
-        return $this->render('edit_profile', [
-            'messages' => $this->message,
-            'userBio' => $this->userDetailsRepository->getUserBio(1)
-        ]);
+        $this->edit_profile();
     }
 
 

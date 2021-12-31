@@ -12,6 +12,7 @@ class SecurityController extends AppController
     {
         parent::__construct();
         $this->userRepository = new UserRepository();
+        session_start();
     }
 
     public function login()
@@ -35,6 +36,8 @@ class SecurityController extends AppController
             return $this->render('login', ['messages'=>['Wrong password!']]);
         }
 
+        $_SESSION['id'] = $user->getId();
+
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/swipe");
     }
@@ -57,6 +60,8 @@ class SecurityController extends AppController
         $user = new User($email, md5($password));
 
         $this->userRepository->addUser($user);
+
+        $_SESSION['id'] = $user->getId();
 
         return $this->render('settings', ['messages' => ['You\'ve been succesfully registered!']]);
     }
