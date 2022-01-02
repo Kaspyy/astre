@@ -29,9 +29,11 @@
             class="input" name="email" value="<?= $user->getEmail() ?>">
             <h3>Password</h3>
             <input type="password" class="input" name="password" value="<?= $user->getPassword() ?>">
-            <button
-            class="btn" type="submit">Update</button>
+            <button class="btn" type="submit">Update</button>
         </form>
+        <a href="/login">
+            <button class="btn" id="logout" type="submit">Logout</button>
+        </a>
     </div>
     </div>
     <script

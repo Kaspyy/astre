@@ -41,8 +41,10 @@ class SecurityController extends AppController
 
         $_SESSION['id'] = $user->getId();
 
+
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/swipe");
+
     }
 
     public function register()
@@ -74,4 +76,5 @@ class SecurityController extends AppController
 
         $this->render($this->login());
     }
+
 }

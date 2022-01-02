@@ -79,4 +79,14 @@ class UserDetailsRepository extends Repository
         $stmt->execute();
     }
 
+    public function updateUserGender(int $userGender, int $id): void
+    {
+        $stmt = $this->database->connect()->prepare('
+        UPDATE user_account SET gender_id = :userGender where id = :id');
+
+        $stmt->bindParam(':userGender', $userGender, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
 }

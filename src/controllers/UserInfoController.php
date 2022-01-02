@@ -1,5 +1,4 @@
 <?php
-
 require_once 'AppController.php';
 require_once __DIR__.'/../models/User.php';
 require_once __DIR__.'/../models/UserPhoto.php';
@@ -28,7 +27,6 @@ class UserInfoController extends AppController
         $this->userDetailsRepository = new UserDetailsRepository();
         $this->userRepository = new UserRepository();
         session_start();
-//        var_dump($_SESSION['id']);
         $this->id = $_SESSION['id'];
     }
 
@@ -102,5 +100,12 @@ class UserInfoController extends AppController
         $this->edit_profile();
     }
 
+    public function updateUserGender()
+    {
+        $userGender = ($_POST['gender']);
+        $this->userDetailsRepository->updateUserGender($userGender, $this->id);
+
+        $this->edit_profile();
+    }
 
 }

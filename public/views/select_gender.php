@@ -18,9 +18,10 @@
         <a href="/edit_profile" class="done-button">Done</a>
       </nav>
         <div class="select-gender-settings-screen">
-            <div class="select-gender-wrapper">
-                <input type="radio" name="select" id="option-1" checked>
-                <input type="radio" name="select" id="option-2">
+            <form action="updateUserGender" method="post">
+                <div class="select-gender-wrapper">
+                <input type="radio" name="gender" id="option-1" value="2">
+                <input type="radio" name="gender" id="option-2" value="1">
                   <label for="option-1" class="option option-1">
                     <div class="dot"></div>
                      <span>Man</span>
@@ -29,7 +30,9 @@
                     <div class="dot"></div>
                      <span>Woman</span>
                   </label>
-               </div>
+                </div>
+            <button class="btn" id="selectButton" type="submit">Update</button>
+            </form>
         </div>
     </div>
     </div>
