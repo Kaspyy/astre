@@ -58,7 +58,7 @@
 
       <div class="messages-container">
         <div class="container-name">Messages</div>
-        <a href="/chat" class="message-container">
+        <a href="/chat?user_id=" class="message-container">
           <div class="message-container-photo">
             <img src="public/img/profilepics/msg1.png" alt="" />
           </div>

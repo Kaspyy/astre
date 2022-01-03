@@ -27,6 +27,7 @@ class UserInfoController extends AppController
         $this->userDetailsRepository = new UserDetailsRepository();
         $this->userRepository = new UserRepository();
         session_start();
+        session_regenerate_id();
         $this->id = $_SESSION['id'];
     }
 
@@ -102,8 +103,27 @@ class UserInfoController extends AppController
 
     public function updateUserGender()
     {
-        $userGender = ($_POST['gender']);
+        $chosenGender = $_POST['gender'];
+        if ($chosenGender == "Man") {
+            $userGender = "Man";
+        }
+        else {
+            $userGender = "Woman";
+        }
         $this->userDetailsRepository->updateUserGender($userGender, $this->id);
+
+        $this->edit_profile();
+    }
+    public function updateUserInterest()
+    {
+        $chosenInterest = $_POST['gender'];
+        if ($chosenInterest == "Men") {
+            $userInterest = "Men";
+        }
+        else {
+            $userInterest = "Women";
+        }
+        $this->userDetailsRepository->updateUserInterest($userInterest, $this->id);
 
         $this->edit_profile();
     }

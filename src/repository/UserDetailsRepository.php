@@ -79,14 +79,40 @@ class UserDetailsRepository extends Repository
         $stmt->execute();
     }
 
-    public function updateUserGender(int $userGender, int $id): void
+    public function updateUserGender (string $userGender, int $id): void
     {
         $stmt = $this->database->connect()->prepare('
-        UPDATE user_account SET gender_id = :userGender where id = :id');
-
-        $stmt->bindParam(':userGender', $userGender, PDO::PARAM_INT);
+        UPDATE user_account SET gender_id = :gender_id where id = :id');
+        if ($userGender == "Man")
+        {
+            $gender_id = 2;
+        }
+        else
+        {
+            $gender_id = 1;
+        }
+        $stmt->bindParam(':gender_id', $gender_id, PDO::PARAM_INT);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
+
+    }
+
+    public function updateUserInterest (string $userInterest, int $id): void
+    {
+        $stmt = $this->database->connect()->prepare('
+        UPDATE interested_in_gender SET gender_id = :gender_id where user_account_id = :id');
+        if ($userInterest == "Men")
+        {
+            $gender_id = 2;
+        }
+        else
+        {
+            $gender_id = 1;
+        }
+        $stmt->bindParam(':gender_id', $gender_id, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
     }
 
 }

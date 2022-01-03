@@ -5,7 +5,6 @@ class UserDetails extends User
     private $name;
     private $birthday;
 
-
     public function __construct($name, $birthday)
     {
         $this->name = $name;

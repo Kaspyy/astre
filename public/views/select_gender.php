@@ -20,8 +20,8 @@
         <div class="select-gender-settings-screen">
             <form action="updateUserGender" method="post">
                 <div class="select-gender-wrapper">
-                <input type="radio" name="gender" id="option-1" value="2">
-                <input type="radio" name="gender" id="option-2" value="1">
+                <input type="radio" name="gender" id="option-1" value="Man">
+                <input type="radio" name="gender" id="option-2" value="Woman">
                   <label for="option-1" class="option option-1">
                     <div class="dot"></div>
                      <span>Man</span>

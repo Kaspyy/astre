@@ -65,6 +65,11 @@ class UserRepository extends Repository
         ');
         $stmt->execute([$id]);
 
+        $stmt = $this->database->connect()->prepare('
+            INSERT INTO interested_in_gender (user_account_id) VALUES (?)
+        ');
+        $stmt->execute([$id]);
+
         $name = $userDetails->getName();
         $birthday = $userDetails->getBirthday();
 

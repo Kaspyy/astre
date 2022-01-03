@@ -21,6 +21,7 @@ Router::post('uploadPhoto', 'UserInfoController');
 Router::post('updateUserDetails', 'UserInfoController');
 Router::post('updateUserBio', 'UserInfoController');
 Router::post('updateUserGender', 'UserInfoController');
+Router::post('updateUserInterest', 'UserInfoController');
 Router::get('logout', 'SecurityController');
 
 Router::run($path);
