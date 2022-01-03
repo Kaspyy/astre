@@ -58,12 +58,13 @@
 
       <div class="messages-container">
         <div class="container-name">Messages</div>
-        <a href="/chat?user_id=" class="message-container">
+          <?php foreach ($userChats as $userChat): ?>
+        <a href="/chat" class="message-container">
           <div class="message-container-photo">
-            <img src="public/img/profilepics/msg1.png" alt="" />
+            <img src="public/uploads/<?= $userChat->getPhoto(); ?>" alt="" />
           </div>
           <div class="message-container-text">
-            <h3 class="message-container-username">Emilia</h3>
+            <h3 class="message-container-username"><?= $userChat->getName(); ?></h3>
             <div class="message-container-snippet">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum
               consequuntur, sunt commodi hic doloribus molestiae iure obcaecati
@@ -72,66 +73,7 @@
             </div>
           </div>
         </a>
-        <div class="message-container">
-          <div class="message-container-photo">
-            <img src="public/img/profilepics/msg2.png" alt="" />
-          </div>
-          <div class="message-container-text">
-            <h3 class="message-container-username">Gosia</h3>
-            <div class="message-container-snippet">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt,
-              eum? fsaffafa
-            </div>
-          </div>
-        </div>
-        <div class="message-container">
-          <div class="message-container-photo">
-            <img src="public/img/profilepics/msg3.jpg" alt="" />
-          </div>
-          <div class="message-container-text">
-            <h3 class="message-container-username">Justyna</h3>
-            <div class="message-container-snippet">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt,
-              eum?
-            </div>
-          </div>
-        </div>
-        <div class="message-container">
-          <div class="message-container-photo">
-            <img src="public/img/profilepics/msg1.png" alt="" />
-          </div>
-          <div class="message-container-text">
-            <h3 class="message-container-username">Emilia</h3>
-            <div class="message-container-snippet">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt,
-              eum?
-            </div>
-          </div>
-        </div>
-        <div class="message-container">
-          <div class="message-container-photo">
-            <img src="public/img/profilepics/msg2.png" alt="" />
-          </div>
-          <div class="message-container-text">
-            <h3 class="message-container-username">Gosia</h3>
-            <div class="message-container-snippet">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt,
-              eum?
-            </div>
-          </div>
-        </div>
-        <div class="message-container">
-          <div class="message-container-photo">
-            <img src="public/img/profilepics/msg3.jpg" alt="" />
-          </div>
-          <div class="message-container-text">
-            <h3 class="message-container-username">Justyna</h3>
-            <div class="message-container-snippet">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt,
-              eum?
-            </div>
-          </div>
-        </div>
+          <?php endforeach; ?>
       </div>
     </div>
     <script

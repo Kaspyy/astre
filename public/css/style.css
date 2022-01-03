@@ -110,6 +110,7 @@ form {
 
 #logout {
   background-color: #ff3c3c;
+  margin: auto 117px;
 }
 
 .btn:hover {
@@ -927,6 +928,7 @@ form.sign-up-form {
   height: 74px;
   border-radius: 50%;
   margin: 0.5rem 0.5rem;
+  object-fit: cover;
 }
 
 .message-container-text {
@@ -1259,6 +1261,9 @@ input:focus {
     border-radius: 10px;
     margin-left: auto;
     margin-right: auto;
+  }
+  #logout {
+    margin: auto 111px;
   }
 
 

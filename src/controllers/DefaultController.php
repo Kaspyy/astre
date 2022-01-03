@@ -13,11 +13,6 @@ class DefaultController extends AppController {
     {
         $this->render('swipe');
     }
-
-    public function chats()
-    {
-        $this->render('chats');
-    }
     public function chat()
     {
         $this->render('chat');

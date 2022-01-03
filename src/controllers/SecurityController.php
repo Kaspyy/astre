@@ -4,18 +4,20 @@ require_once 'AppController.php';
 require_once __DIR__.'/../models/User.php';
 require_once __DIR__.'/../repository/UserRepository.php';
 require_once __DIR__.'/../controllers/UserInfoController.php';
+require_once __DIR__.'/../controllers/SessionController.php';
 
 class SecurityController extends AppController
 {
     private $userRepository;
     private $userInfoController;
+    private $sessionController;
 
     public function __construct()
     {
         parent::__construct();
         $this->userRepository = new UserRepository();
         $this->userInfoController = new UserInfoController();
-        session_start();
+        $this->sessionController = new SessionController();
     }
 
     public function login()
@@ -39,11 +41,11 @@ class SecurityController extends AppController
             return $this->render('login', ['messages'=>['Wrong password!']]);
         }
 
-        $_SESSION['id'] = $user->getId();
-
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/swipe");
+
+        $this->sessionController->set("id", $user->getId());
 
     }
 
@@ -75,6 +77,15 @@ class SecurityController extends AppController
         $_SESSION['id'] = $user->getId();
 
         $this->render($this->login());
+    }
+
+    public function logout()
+    {
+        session_start();
+        session_unset();
+        session_destroy();
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}");
     }
 
 }

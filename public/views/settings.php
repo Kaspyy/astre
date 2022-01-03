@@ -31,7 +31,7 @@
             <input type="password" class="input" name="password" value="<?= $user->getPassword() ?>">
             <button class="btn" type="submit">Update</button>
         </form>
-        <a href="/login">
+        <a href="/logout">
             <button class="btn" id="logout" type="submit">Logout</button>
         </a>
     </div>

@@ -4,6 +4,7 @@ require_once __DIR__.'/../models/User.php';
 require_once __DIR__.'/../models/UserPhoto.php';
 require_once __DIR__.'/../repository/UserPhotoRepository.php';
 require_once __DIR__.'/../models/UserDetails.php';
+require_once __DIR__.'/SessionController.php';
 require_once __DIR__.'/../models/UserBio.php';
 require_once __DIR__.'/../repository/UserDetailsRepository.php';
 require_once __DIR__.'/../repository/UserRepository.php';
@@ -19,20 +20,21 @@ class UserInfoController extends AppController
     private $userDetailsRepository;
     private int $id;
     private $userRepository;
+    private $sessionController;
+
 
     public function __construct()
     {
         parent::__construct();
+        $this->sessionController = new SessionController();
         $this->userPhotoRepository = new UserPhotoRepository();
         $this->userDetailsRepository = new UserDetailsRepository();
         $this->userRepository = new UserRepository();
-        session_start();
-        session_regenerate_id();
-        $this->id = $_SESSION['id'];
     }
 
     public function profile()
     {
+        $this->id = $this->sessionController->get("id");
         $userPhoto = $this->userPhotoRepository->getPhoto($this->id);
         $userDetails = $this->userDetailsRepository->getUserDetails($this->id);
         $this->render('profile', ['userPhoto' => $userPhoto, 'userDetails' => $userDetails]);
@@ -40,6 +42,7 @@ class UserInfoController extends AppController
 
     public function edit_profile()
     {
+        $this->id = $this->sessionController->get("id");
         $userPhoto = $this->userPhotoRepository->getPhoto($this->id);
         $userBio = $this->userDetailsRepository->getUserBio($this->id);
         $this->render('edit_profile', ['userPhoto' => $userPhoto, 'userBio' => $userBio]);
@@ -47,6 +50,7 @@ class UserInfoController extends AppController
 
     public function uploadPhoto()
     {
+        $this->id = $this->sessionController->get("id");
         if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) & $this->validate($_FILES['file']))
         {
             move_uploaded_file(
@@ -80,6 +84,7 @@ class UserInfoController extends AppController
 
     public function updateUserDetails()
     {
+        $this->id = $this->sessionController->get("id");
         $userDetails = new UserDetails($_POST['name'], $_POST['birthday']);
         $user = new User($_POST['email'], $_POST['password'], $this->id);
         $this->userDetailsRepository->updateUserDetails($user, $userDetails, $this->id);
@@ -88,6 +93,7 @@ class UserInfoController extends AppController
     }
     public function settings()
     {
+        $this->id = $this->sessionController->get("id");
         $userDetails = $this->userDetailsRepository->getUserDetails($this->id);
         $user = $this->userRepository->getUserById($this->id);
         $this->render('settings', ['userDetails' => $userDetails, 'user' =>$user]);
@@ -95,6 +101,7 @@ class UserInfoController extends AppController
 
     public function updateUserBio()
     {
+        $this->id = $this->sessionController->get("id");
         $userBio = new UserBio($_POST['bio']);
         $this->userDetailsRepository->updateUserBio($userBio, $this->id);
 
@@ -103,6 +110,7 @@ class UserInfoController extends AppController
 
     public function updateUserGender()
     {
+        $this->id = $this->sessionController->get("id");
         $chosenGender = $_POST['gender'];
         if ($chosenGender == "Man") {
             $userGender = "Man";
@@ -116,6 +124,7 @@ class UserInfoController extends AppController
     }
     public function updateUserInterest()
     {
+        $this->id = $this->sessionController->get("id");
         $chosenInterest = $_POST['gender'];
         if ($chosenInterest == "Men") {
             $userInterest = "Men";

@@ -4,6 +4,7 @@ require_once 'Repository.php';
 require_once __DIR__."/../models/UserDetails.php";
 require_once __DIR__."/../models/UserBio.php";
 require_once __DIR__."/../models/User.php";
+require_once __DIR__."/../models/UserChat.php";
 
 class UserDetailsRepository extends Repository
 {
@@ -113,6 +114,40 @@ class UserDetailsRepository extends Repository
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
 
+    }
+
+    public function getChats(int $user_account_id): array
+    {
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT
+                   ua.id,
+                   name,
+                   photo
+            FROM 
+                 conversation
+                JOIN
+                     participant p on conversation.id = p.conversation_id
+                JOIN
+                     user_account ua on ua.id = p.user_account_id
+                JOIN
+                     user_photo up on ua.id = up.user_account_id
+            WHERE
+                  conversation.user_account_id = :user_account_id
+        ');
+        $stmt->bindParam(':user_account_id', $user_account_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $userChats = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($userChats as $userChat) {
+            $result[] = new UserChat(
+                $userChat['id'],
+                $userChat['name'],
+                $userChat['photo']
+            );
+        }
+        return $result;
     }
 
 }
