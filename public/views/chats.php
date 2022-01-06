@@ -30,7 +30,7 @@
         <div class="container-name">New Pairs</div>
         <div class="new-pairs-fields" style="overflow-y: scroll">
           <div class="new-pair">
-            <a href="/chat" class="new-pair-photo">
+            <a href="/chat>" class="new-pair-photo">
               <img src="public/img/profilepics/sophia.jpg" alt="" />
             </a>
             <div class="new-pair-username">Sofia</div>
@@ -59,7 +59,7 @@
       <div class="messages-container">
         <div class="container-name">Messages</div>
           <?php foreach ($userChats as $userChat): ?>
-        <a href="/chat" class="message-container">
+        <a href="/chat?id=<?= $userChat->getChatId(); ?>" class="message-container">
           <div class="message-container-photo">
             <img src="public/uploads/<?= $userChat->getPhoto(); ?>" alt="" />
           </div>

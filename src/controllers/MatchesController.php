@@ -14,7 +14,7 @@ class MatchesController extends AppController
         parent::__construct();
         $this->sessionController = new SessionController();
         $this->userDetailsRepository = new UserDetailsRepository();
-        var_dump($_SESSION);
+        //var_dump($_SESSION);
     }
 
     public function chats()

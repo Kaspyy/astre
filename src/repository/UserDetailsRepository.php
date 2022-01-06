@@ -1,10 +1,10 @@
 <?php
 
 require_once 'Repository.php';
-require_once __DIR__."/../models/UserDetails.php";
-require_once __DIR__."/../models/UserBio.php";
-require_once __DIR__."/../models/User.php";
-require_once __DIR__."/../models/UserChat.php";
+require_once __DIR__ . "/../models/UserDetails.php";
+require_once __DIR__ . "/../models/UserBio.php";
+require_once __DIR__ . "/../models/User.php";
+require_once __DIR__ . "/../models/UserChat.php";
 
 class UserDetailsRepository extends Repository
 {
@@ -18,7 +18,7 @@ class UserDetailsRepository extends Repository
 
         $userDetails = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($userDetails== false) {
+        if ($userDetails == false) {
             return null;
         }
 
@@ -32,7 +32,7 @@ class UserDetailsRepository extends Repository
     {
         $name = $userDetails->getName();
         $birthday = $userDetails->getBirthday();
-        $email =  $user->getEmail();
+        $email = $user->getEmail();
         $password = $user->getPassword();
         $hashedPassword = md5($password);
 
@@ -60,7 +60,7 @@ class UserDetailsRepository extends Repository
 
         $userBio = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($userBio== false) {
+        if ($userBio == false) {
             return null;
         }
 
@@ -80,16 +80,13 @@ class UserDetailsRepository extends Repository
         $stmt->execute();
     }
 
-    public function updateUserGender (string $userGender, int $id): void
+    public function updateUserGender(string $userGender, int $id): void
     {
         $stmt = $this->database->connect()->prepare('
         UPDATE user_account SET gender_id = :gender_id where id = :id');
-        if ($userGender == "Man")
-        {
+        if ($userGender == "Man") {
             $gender_id = 2;
-        }
-        else
-        {
+        } else {
             $gender_id = 1;
         }
         $stmt->bindParam(':gender_id', $gender_id, PDO::PARAM_INT);
@@ -98,16 +95,13 @@ class UserDetailsRepository extends Repository
 
     }
 
-    public function updateUserInterest (string $userInterest, int $id): void
+    public function updateUserInterest(string $userInterest, int $id): void
     {
         $stmt = $this->database->connect()->prepare('
         UPDATE interested_in_gender SET gender_id = :gender_id where user_account_id = :id');
-        if ($userInterest == "Men")
-        {
+        if ($userInterest == "Men") {
             $gender_id = 2;
-        }
-        else
-        {
+        } else {
             $gender_id = 1;
         }
         $stmt->bindParam(':gender_id', $gender_id, PDO::PARAM_INT);
@@ -121,20 +115,38 @@ class UserDetailsRepository extends Repository
         $result = [];
 
         $stmt = $this->database->connect()->prepare('
-            SELECT
-                   ua.id,
+            SELECT iui.id,
+                   user_id,
                    name,
                    photo
-            FROM 
-                 conversation
-                JOIN
-                     participant p on conversation.id = p.conversation_id
-                JOIN
-                     user_account ua on ua.id = p.user_account_id
-                JOIN
-                     user_photo up on ua.id = up.user_account_id
-            WHERE
-                  conversation.user_account_id = :user_account_id
+    FROM (
+         SELECT conversation.id,
+                CASE
+                    WHEN
+                        conversation.user_account_id = :user_account_id
+                        THEN
+                        (
+                            SELECT ua.id
+                            FROM conversation
+                                     JOIN
+                                 participant p ON conversation.id = p.conversation_id
+                                     JOIN
+                                 user_account ua ON ua.id = p.user_account_id
+                            WHERE conversation.user_account_id = :user_account_id)
+                    WHEN p.user_account_id = :user_account_id THEN 
+                        (SELECT ua.id
+                         FROM conversation
+                                  JOIN
+                              participant p ON conversation.id = p.conversation_id
+                                  JOIN
+                              user_account ua ON ua.id = conversation.user_account_id
+                         WHERE p.user_account_id = :user_account_id)
+                    END AS user_id
+         FROM conversation
+                  JOIN
+              participant p ON conversation.id = p.conversation_id) AS iui
+         JOIN user_account ua ON iui.user_id = ua.id
+         JOIN user_photo up ON ua.id = up.user_account_id
         ');
         $stmt->bindParam(':user_account_id', $user_account_id, PDO::PARAM_INT);
         $stmt->execute();
@@ -142,6 +154,7 @@ class UserDetailsRepository extends Repository
 
         foreach ($userChats as $userChat) {
             $result[] = new UserChat(
+                $userChat['chatId'],
                 $userChat['id'],
                 $userChat['name'],
                 $userChat['photo']
