@@ -11,7 +11,7 @@ Router::get('settings', 'UserInfoController');
 Router::get('swipe', 'DefaultController');
 Router::get('chats','MatchesController');
 Router::get('profile', 'UserInfoController');
-Router::get('chat', 'DefaultController');
+Router::get('chat', 'MatchesController');
 Router::get('select_gender', 'DefaultController');
 Router::get('interested_in', 'DefaultController');
 Router::get('select_hobbies','DefaultController');

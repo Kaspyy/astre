@@ -16,9 +16,9 @@
       <section class="chat-area">
         <header>
           <a href="/chats" class="back-icon"><i class="fas fa-arrow-left"></i></a>
-          <img src="public/img/profilepics/msg1.png" alt="" />
+          <img src="public/uploads/<?= $userChatInfo->getPhoto()?>" alt="" />
           <div class="details">
-            <span>Emilia</span>
+            <span><?= $userChatInfo->getName()?></span>
           </div>
         </header>
         <div class="chat-box">
@@ -28,29 +28,7 @@
             </div>
           </div>
           <div class="chat incoming">
-            <img src="public/img/profilepics/msg1.png" alt="" />
-            <div class="details">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-            </div>
-          </div>
-          <div class="chat outgoing">
-            <div class="details">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ex molestias nostrum possimus nobis, suscipit corporis! Id eveniet dolore mollitia?</p>
-            </div>
-          </div>
-          <div class="chat incoming">
-            <img src="public/img/profilepics/msg1.png" alt="" />
-            <div class="details">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-            </div>
-          </div>
-          <div class="chat outgoing">
-            <div class="details">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ex molestias nostrum possimus nobis, suscipit corporis! Id eveniet dolore mollitia?</p>
-            </div>
-          </div>
-          <div class="chat incoming">
-            <img src="public/img/profilepics/msg1.png" alt="" />
+            <img src="public/uploads/<?= $userChatInfo->getPhoto()?>" alt="" />
             <div class="details">
               <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
             </div>

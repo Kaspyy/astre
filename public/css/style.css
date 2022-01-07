@@ -1326,6 +1326,7 @@ input:focus {
   height: 40px;
   border-radius: 50%;
   margin: 0 1rem;
+  object-fit: cover;
 }
 
 .chat-area header .back-icon {
@@ -1379,6 +1380,7 @@ input:focus {
   height: 35px;
   width: 35px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .incoming .details {

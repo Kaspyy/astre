@@ -163,4 +163,58 @@ class UserDetailsRepository extends Repository
         return $result;
     }
 
+    public function getChatInfo(int $user_account_id, int $chat_id)
+    {
+        $stmt = $this->database->connect()->prepare('SELECT iui.id,
+       user_id,
+       name,
+       photo
+    FROM (
+         SELECT conversation.id,
+                CASE
+                    WHEN
+                        conversation.user_account_id = :user_account_id and conversation.id = :chat_id
+                        THEN
+                        (
+                            SELECT ua.id
+                            FROM conversation
+                                     JOIN
+                                 participant p ON conversation.id = p.conversation_id
+                                     JOIN
+                                 user_account ua ON ua.id = p.user_account_id
+                            WHERE conversation.user_account_id = :user_account_id and conversation.id = :chat_id)
+                    WHEN p.user_account_id = :user_account_id THEN
+                        (SELECT ua.id
+                         FROM conversation
+                                  JOIN
+                              participant p ON conversation.id = p.conversation_id
+                                  JOIN
+                              user_account ua ON ua.id = conversation.user_account_id
+                         WHERE p.user_account_id = :user_account_id and conversation.id = :chat_id)
+                    END AS user_id
+         FROM conversation
+                  JOIN
+              participant p ON conversation.id = p.conversation_id) AS iui
+         JOIN user_account ua ON iui.user_id = ua.id
+         JOIN user_photo up ON ua.id = up.user_account_id;
+        ');
+
+        $stmt->bindParam(':user_account_id', $user_account_id, PDO::PARAM_INT);
+        $stmt->bindParam(':chat_id', $chat_id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $userChat = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($userChat == false) {
+            return null;
+        }
+
+        return new UserChat(
+            $userChat['chatId'],
+            $userChat['id'],
+            $userChat['name'],
+            $userChat['photo']
+        );
+    }
+
 }

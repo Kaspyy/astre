@@ -24,4 +24,13 @@ class MatchesController extends AppController
         $this->render('chats', ['userChats' => $userChats]);
     }
 
+
+    public function chat()
+    {
+        $chat_id = $_GET['chat_id'];
+        $this->id = $this->sessionController->get("id");
+        $userChatInfo = $this->userDetailsRepository->getChatInfo($this->id, $chat_id);
+        $this->render('chat', ['userChatInfo' => $userChatInfo]);
+    }
+
 }
