@@ -1,6 +1,6 @@
 <?php
 
-class UserChat extends User
+class UserChat
 {
     private $chatId;
     private $id;
@@ -16,7 +16,7 @@ class UserChat extends User
         $this->photo = $photo;
     }
 
-    function getChatId()
+    function getChatId(): int
     {
         return $this->chatId;
     }

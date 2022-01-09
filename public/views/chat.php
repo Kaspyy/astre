@@ -22,21 +22,29 @@
           </div>
         </header>
         <div class="chat-box">
+            <?php foreach ($messages as $message): ?>
+            <?php if ($message->getSender() == $_SESSION['id']): ?>
           <div class="chat outgoing">
             <div class="details">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ex molestias nostrum possimus nobis, suscipit corporis! Id eveniet dolore mollitia?</p>
+              <p><?=$message->getContent()?></p>
             </div>
           </div>
+            <?php endif; ?>
+            <?php if ($message->getReceiver() == $_SESSION['id']): ?>
           <div class="chat incoming">
             <img src="public/uploads/<?= $userChatInfo->getPhoto()?>" alt="" />
             <div class="details">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+              <p><?=$message->getContent()?></p>
             </div>
           </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
         </div>
-        <form action="#" class="typing-area">
-            <input type="text" placeholder="Type a message here...">
-            <button><i class="fab fa-telegram-plane"></i></button>
+        <form action="sendMessage?chat_id=<?=$userChatInfo->getChatId()?>" class="typing-area" method="post">
+            <input type="text" name="sender_id" value="<?php echo $_SESSION["id"];?>" hidden>
+            <input type="text" name="receiver_id" value="<?=$userChatInfo->getId()?>" hidden>
+            <input type="text" name="message" class="chat-input-field" placeholder="Type a message here...">
+            <button type="submit"><i class="fab fa-telegram-plane"></i></button>
         </form>
       </section>
     </div>
@@ -44,5 +52,6 @@
       src="https://kit.fontawesome.com/8a50b84207.js"
       crossorigin="anonymous"
     ></script>
+    <script type="text/javascript" src="./public/js/chat.js"></script>
   </body>
 </html>

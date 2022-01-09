@@ -1,6 +1,6 @@
 <?php
 
-class UserBio extends User
+class UserBio
 {
     private $bio;
 

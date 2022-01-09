@@ -1,6 +1,6 @@
 <?php
 
-class UserPhoto extends User
+class UserPhoto
 {
     private $photo;
 
@@ -14,12 +14,10 @@ class UserPhoto extends User
         return $this->photo;
     }
 
-
     public function setPhoto($photo)
     {
         $this->photo = $photo;
     }
-
 
 
 }

@@ -154,8 +154,8 @@ class UserDetailsRepository extends Repository
 
         foreach ($userChats as $userChat) {
             $result[] = new UserChat(
-                $userChat['chatId'],
                 $userChat['id'],
+                $userChat['user_id'],
                 $userChat['name'],
                 $userChat['photo']
             );
@@ -163,7 +163,7 @@ class UserDetailsRepository extends Repository
         return $result;
     }
 
-    public function getChatInfo(int $user_account_id, int $chat_id)
+    public function getChatInfo(int $user_account_id, int $chat_id): ?UserChat
     {
         $stmt = $this->database->connect()->prepare('SELECT iui.id,
        user_id,
@@ -210,8 +210,8 @@ class UserDetailsRepository extends Repository
         }
 
         return new UserChat(
-            $userChat['chatId'],
             $userChat['id'],
+            $userChat['user_id'],
             $userChat['name'],
             $userChat['photo']
         );

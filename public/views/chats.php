@@ -59,7 +59,7 @@
       <div class="messages-container">
         <div class="container-name">Messages</div>
           <?php foreach ($userChats as $userChat): ?>
-        <a href="/chat?chat_id=<?= $userChat->getId(); ?>" class="message-container">
+        <a href="/chat?chat_id=<?= $userChat->getChatId(); ?>" class="message-container">
           <div class="message-container-photo">
             <img src="public/uploads/<?= $userChat->getPhoto(); ?>" alt="" />
           </div>

@@ -1,6 +1,6 @@
 <?php
 
-class UserDetails extends User
+class UserDetails
 {
     private $name;
     private $birthday;
