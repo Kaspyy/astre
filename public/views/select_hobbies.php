@@ -42,6 +42,18 @@
                 <input type="checkbox" />
                 <div class="control__indicator"></div>
             </label>
+            <label class="control control--checkbox">Dancing
+                <input type="checkbox" />
+                <div class="control__indicator"></div>
+            </label>
+            <label class="control control--checkbox">Workout
+                <input type="checkbox" />
+                <div class="control__indicator"></div>
+            </label>
+            <label class="control control--checkbox">Vlogging
+                <input type="checkbox" />
+                <div class="control__indicator"></div>
+            </label>
         </div>
     </div>
     </div>

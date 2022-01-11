@@ -5,6 +5,8 @@ require_once __DIR__ . "/../models/UserDetails.php";
 require_once __DIR__ . "/../models/UserBio.php";
 require_once __DIR__ . "/../models/User.php";
 require_once __DIR__ . "/../models/UserChat.php";
+require_once __DIR__ . "/../models/UserGender.php";
+require_once __DIR__ . "/../models/UserInterest.php";
 
 class UserDetailsRepository extends Repository
 {
@@ -95,6 +97,21 @@ class UserDetailsRepository extends Repository
 
     }
 
+    public function getUserGender(int $id): ?UserGender
+    {
+        $stmt = $this->database->connect()->prepare(
+            "SELECT g.name as gender_name FROM user_account JOIN gender g on g.id = user_account.gender_id WHERE user_account.id = :id"
+        );
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $userGender = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return new UserGender(
+            $userGender['gender_name']
+        );
+    }
+
     public function updateUserInterest(string $userInterest, int $id): void
     {
         $stmt = $this->database->connect()->prepare('
@@ -107,6 +124,20 @@ class UserDetailsRepository extends Repository
         $stmt->bindParam(':gender_id', $gender_id, PDO::PARAM_INT);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
+
+    }
+    public function getUserInterest(int $id): ?UserInterest
+    {
+        $stmt = $this->database->connect()->prepare('
+        SELECT gender_id FROM interested_in_gender where user_account_id = :id');
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $userInterest = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return new UserInterest(
+            $userInterest['gender_id']
+        );
 
     }
 

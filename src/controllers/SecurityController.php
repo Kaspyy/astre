@@ -76,7 +76,8 @@ class SecurityController extends AppController
 
         $_SESSION['id'] = $user->getId();
 
-        $this->render($this->login());
+        return $this->render('login', ['messages'=>['Successfully registered!']]);
+
     }
 
     public function logout()

@@ -51,7 +51,7 @@
       <h4>Gender</h4>
       <a href="/select_gender">
         <div class="edit-profile-choose-container">
-          Man
+          <?=$userGender->getGender()?>
           <div class="arrow-button">
             <i class="fas fa-chevron-right"></i>
           </div>
@@ -62,7 +62,7 @@
       <h4>Interested in</h4>
       <a href="/interested_in">
         <div class="edit-profile-choose-container">
-          Women
+            <?php if ($userInterest->getUserInterest() == 2) echo 'men'; else echo 'women'?>
           <div class="arrow-button">
             <i class="fas fa-chevron-right"></i>
           </div>

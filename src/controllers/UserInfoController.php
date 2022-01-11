@@ -45,9 +45,23 @@ class UserInfoController extends AppController
         $this->id = $this->sessionController->get("id");
         $userPhoto = $this->userPhotoRepository->getPhoto($this->id);
         $userBio = $this->userDetailsRepository->getUserBio($this->id);
-        $this->render('edit_profile', ['userPhoto' => $userPhoto, 'userBio' => $userBio]);
+        $userGender = $this->userDetailsRepository->getUserGender($this->id);
+        $userInterest = $this->userDetailsRepository->getUserInterest($this->id);
+        $this->render('edit_profile', ['userPhoto' => $userPhoto, 'userBio' => $userBio, 'userGender' => $userGender, 'userInterest' => $userInterest]);
     }
 
+    public function select_gender()
+    {
+        $this->id = $this->sessionController->get("id");
+        $userGender = $this->userDetailsRepository->getUserGender($this->id);
+        $this->render('select_gender', ['userGender' => $userGender]);
+    }
+    public function interested_in()
+    {
+        $this->id = $this->sessionController->get("id");
+        $userInterest = $this->userDetailsRepository->getUserInterest($this->id);
+        $this->render('interested_in', ['userInterest' => $userInterest]);
+    }
     public function uploadPhoto()
     {
         $this->id = $this->sessionController->get("id");
@@ -120,7 +134,8 @@ class UserInfoController extends AppController
         }
         $this->userDetailsRepository->updateUserGender($userGender, $this->id);
 
-        $this->edit_profile();
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/select_gender");
     }
     public function updateUserInterest()
     {
@@ -134,7 +149,8 @@ class UserInfoController extends AppController
         }
         $this->userDetailsRepository->updateUserInterest($userInterest, $this->id);
 
-        $this->edit_profile();
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/interested_in");
     }
 
 }

@@ -13,15 +13,6 @@ class DefaultController extends AppController {
     {
         $this->render('swipe');
     }
-
-    public function select_gender()
-    {
-        $this->render('select_gender');
-    }
-    public function interested_in()
-    {
-        $this->render('interested_in');
-    }
     public function select_hobbies()
     {
         $this->render('select_hobbies');

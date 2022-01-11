@@ -52,6 +52,5 @@
       src="https://kit.fontawesome.com/8a50b84207.js"
       crossorigin="anonymous"
     ></script>
-    <script type="text/javascript" src="./public/js/chat.js"></script>
   </body>
 </html>
