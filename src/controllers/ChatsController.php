@@ -40,6 +40,14 @@ class ChatsController extends AppController
         $this->render('chat', ['userChatInfo' => $userChatInfo, 'messages' => $messages]);
     }
 
+    public function chatJS($userId, $receiverId)
+    {
+
+        header('Content-type: application/json');
+        http_response_code(200);
+        echo $this->userMessageRepository->getMessagesJSON($userId, $receiverId);
+    }
+
     public function sendMessage()
     {
         $chat_id = $_GET['chat_id'];

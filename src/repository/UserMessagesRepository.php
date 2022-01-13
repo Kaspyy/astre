@@ -57,5 +57,24 @@ class UserMessagesRepository extends Repository
 
     }
 
+    public function getMessagesJSON(int $sender, int $receiver): string
+    {
+        $stmt = $this->database->connect()->prepare('
+                       SELECT sender_id, receiver_id, message_content
+            FROM message
+            where sender_id = :sender and receiver_id = :receiver
+               or sender_id = :receiver and receiver_id = :sender
+            ORDER BY id ASC
+        ');
+
+        $stmt->bindParam(':sender', $sender);
+        $stmt->bindParam(':receiver', $receiver);
+        $stmt->execute();
+
+        $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return json_encode($messages);
+    }
+
 
 }
