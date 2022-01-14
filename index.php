@@ -17,6 +17,7 @@ Router::get('interested_in', 'UserInfoController');
 Router::get('select_hobbies','DefaultController');
 Router::post('login', 'SecurityController');
 Router::post('sendMessage', 'ChatsController');
+Router::post('sendMessageJS', 'ChatsController');
 Router::post('register', 'SecurityController');
 Router::post('uploadPhoto', 'UserInfoController');
 Router::post('updateUserDetails', 'UserInfoController');

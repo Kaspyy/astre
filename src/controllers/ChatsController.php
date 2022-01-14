@@ -42,7 +42,6 @@ class ChatsController extends AppController
 
     public function chatJS($userId, $receiverId)
     {
-
         header('Content-type: application/json');
         http_response_code(200);
         echo $this->userMessageRepository->getMessagesJSON($userId, $receiverId);
@@ -59,6 +58,24 @@ class ChatsController extends AppController
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/chat?chat_id={$chat_id}");
+    }
+    public function sendMessageJS($chatId, $userId, $receiverId)
+    {
+        header('Content-type: application/json');
+        http_response_code(200);
+
+        $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+
+        if ($contentType === "application/json") {
+            $content = trim(file_get_contents("php://input"));
+            $decoded = json_decode($content, true);
+
+            header('Content-type: application/json');
+            http_response_code(200);
+
+            $this->userMessageRepository->sendMessageJSON($chatId, $userId, $receiverId, $decoded['content']);
+        }
+
     }
 
 }

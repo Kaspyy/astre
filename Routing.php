@@ -35,7 +35,9 @@ class Router
 
         $id = $urlParts[1] ?? '';
         $id2 = $urlParts[2] ?? '';
+        $id3 = $urlParts[3] ?? '';
+        $id4 = $urlParts[4] ?? '';
 
-        $object->$action($id, $id2);
+        $object->$action($id, $id2, $id3, $id4);
     }
 }

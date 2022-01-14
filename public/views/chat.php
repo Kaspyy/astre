@@ -11,7 +11,6 @@
       rel="stylesheet"
     />
       <script type="text/javascript" src="./public/js/chat.js" defer></script>
-
   </head>
   <body>
     <div class="wrapper">
@@ -42,12 +41,14 @@
                 <?php endif; ?>
             <?php endforeach; ?>
         </div>
-        <form action="sendMessage?chat_id=<?=$userChatInfo->getChatId()?>" class="typing-area" method="post">
+<!--        <form action="sendMessage?chat_id=--><?//=$userChatInfo->getChatId()?><!--" class="typing-area" method="post">-->
+        <div class="typing-area">
+            <input type="text" name="chat_id" value="<?=$userChatInfo->getChatId()?>" hidden>
             <input type="text" name="sender_id" value="<?php echo $_SESSION["id"];?>" hidden>
             <input type="text" name="receiver_id" value="<?=$userChatInfo->getId()?>" hidden>
             <input type="text" name="message" class="chat-input-field" placeholder="Type a message here...">
-            <button type="submit"><i class="fab fa-telegram-plane"></i></button>
-        </form>
+            <button><i class="fab fa-telegram-plane"></i></button>
+        </div>
       </section>
     </div>
     <script
@@ -56,3 +57,19 @@
     ></script>
   </body>
 </html>
+
+<template id="message-template-outgoing">
+        <div class="chat outgoing">
+            <div class="details">
+                <p>content</p>
+            </div>
+        </div>
+</template>
+<template id="message-template-incoming">
+<div class="chat incoming">
+    <img src="public/uploads/<?= $userChatInfo->getPhoto()?>" alt="" />
+    <div class="details">
+        <p>content?></p>
+    </div>
+</div>
+</template>

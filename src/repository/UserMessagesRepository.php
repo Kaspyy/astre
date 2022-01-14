@@ -76,5 +76,22 @@ class UserMessagesRepository extends Repository
         return json_encode($messages);
     }
 
+    public function sendMessageJSON($conversation_id, $sender_id, $receiver_id, $message_content)
+    {
+        if (!empty($message_content)) {
+
+            $stmt = $this->database->connect()->prepare('
+                INSERT INTO message (conversation_id, sender_id, receiver_id, message_content) VALUES (?, ?, ?, ?)
+            ');
+
+            $stmt->execute([
+                $conversation_id,
+                $sender_id,
+                $receiver_id,
+                $message_content
+            ]);
+        }
+    }
+
 
 }
