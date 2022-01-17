@@ -9,10 +9,6 @@ class DefaultController extends AppController {
         $this->render('login', ['message'=>"Hello World!"]);
     }
 
-    public function swipe()
-    {
-        $this->render('swipe');
-    }
     public function select_hobbies()
     {
         $this->render('select_hobbies');

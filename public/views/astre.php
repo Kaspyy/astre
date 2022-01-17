@@ -28,7 +28,7 @@
     </ul>
     <div class="tab-content">
       <div id="swipe" data-tab-content class="active">
-        <div class="photo-and-text" style="overflow-y: scroll">
+        <div class="astre--card" style="overflow-y: scroll">
           <div class="photo-and-text-content">
             <div class="photo">
               <div class="zodiac-sign">♈︎</div>

@@ -8,7 +8,7 @@ $path = parse_url( $path, PHP_URL_PATH);
 Router::get('', 'DefaultController');
 Router::get('edit_profile', 'UserInfoController');
 Router::get('settings', 'UserInfoController');
-Router::get('swipe', 'DefaultController');
+Router::get('swipe', 'ProfilesController');
 Router::get('chats','ChatsController');
 Router::get('profile', 'UserInfoController');
 Router::get('chat', 'ChatsController');

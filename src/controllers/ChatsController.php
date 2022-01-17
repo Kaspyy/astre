@@ -18,7 +18,6 @@ class ChatsController extends AppController
         $this->sessionController = new SessionController();
         $this->userDetailsRepository = new UserDetailsRepository();
         $this->userMessageRepository = new UserMessagesRepository();
-        //var_dump($_SESSION);
     }
 
     public function chats()

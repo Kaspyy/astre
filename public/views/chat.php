@@ -41,7 +41,6 @@
                 <?php endif; ?>
             <?php endforeach; ?>
         </div>
-<!--        <form action="sendMessage?chat_id=--><?//=$userChatInfo->getChatId()?><!--" class="typing-area" method="post">-->
         <div class="typing-area">
             <input type="text" name="chat_id" value="<?=$userChatInfo->getChatId()?>" hidden>
             <input type="text" name="sender_id" value="<?php echo $_SESSION["id"];?>" hidden>
@@ -69,7 +68,7 @@
 <div class="chat incoming">
     <img src="public/uploads/<?= $userChatInfo->getPhoto()?>" alt="" />
     <div class="details">
-        <p>content?></p>
+        <p>content</p>
     </div>
 </div>
 </template>

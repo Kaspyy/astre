@@ -62,7 +62,7 @@
       <h4>Interested in</h4>
       <a href="/interested_in">
         <div class="edit-profile-choose-container">
-            <?php if ($userInterest->getUserInterest() == 2) echo 'men'; else echo 'women'?>
+            <?php if ($userInterest->getUserInterest() == 2) echo 'Men'; else echo 'Women'?>
           <div class="arrow-button">
             <i class="fas fa-chevron-right"></i>
           </div>
