@@ -6,7 +6,7 @@ const chatId = document.querySelector("[name='chat_id']");
 const messageContent = document.querySelector('input[placeholder="Type a message here..."]');
 
 console.log(receiver.value)
-setInterval((sender, receiver) => refreshChat(sender,receiver), 1000, sender.value, receiver.value);
+setInterval((sender, receiver) => refreshChat(sender,receiver), 2500, sender.value, receiver.value);
 
 function refreshChat(sender, receiver) {
     console.log(sender, receiver)
@@ -62,6 +62,7 @@ sendButton.addEventListener("click", function (event) {
         },
         body: JSON.stringify(data)
     }).then(function (response) {
+        messageContent.value = "";
         return response.json();
     }).then(function () {
         refreshChat(sender, receiver);

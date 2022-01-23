@@ -1,9 +1,9 @@
 <?php
 require_once 'AppController.php';
 require_once 'SessionController.php';
-require_once __DIR__.'/../models/UserProfile.php';
-require_once __DIR__.'/../repository/ProfilesRepository.php';
-require_once __DIR__.'/../repository/UserDetailsRepository.php';
+require_once __DIR__ . '/../models/UserProfile.php';
+require_once __DIR__ . '/../repository/ProfilesRepository.php';
+require_once __DIR__ . '/../repository/UserDetailsRepository.php';
 
 class ProfilesController extends AppController
 {
@@ -29,6 +29,11 @@ class ProfilesController extends AppController
         $this->render('swipe', ['profiles' => $profiles, 'userDetails' => $userDetails]);
     }
 
+    public function giveLike($userId, $receiverId)
+    {
+        $this->profilesRepository->giveLike($userId, $receiverId);
+        http_response_code(200);
+    }
 
 
 }

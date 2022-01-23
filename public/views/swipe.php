@@ -30,9 +30,11 @@
         <i class="fas fa-times"></i>
         <i class="fa fa-heart"></i>
     </div>
+    <input type="text" name="userId" value="<?php echo $_SESSION["id"]; ?>" hidden>
     <div class="astre--cards">
         <?php foreach ($profiles as $profile): ?>
-            <div class="astre--card" style="overflow-y: scroll">
+            <div class="astre--card">
+                <input name="userId" type="text" value="<?= $profile->getId() ?>" hidden>
                 <div class="photo-and-text-content">
                     <div class="photo">
                         <img src="public/uploads/<?= $profile->getPhoto() ?>">
@@ -106,16 +108,18 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="photo-bio">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel sequi ipsam temporibus
-                                corporis
-                                rerum delectus provident placeat amet ut necessitatibus.
+                            <div id="zodiacInfo" class="photo-bio">
+                                zodiacInfo
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         <?php endforeach; ?>
+        <div class="messages" style="margin: auto; text-align: center">
+            <img src="public/img/undraw_counting_stars_rrnl.svg" class="image" alt="" hidden/>
+            <p>Message</p>
+        </div>
     </div>
     <div class="astre--buttons">
         <button id="nope">
@@ -131,7 +135,8 @@
         crossorigin="anonymous"
 ></script>
 <script type="text/javascript" src="/public/js/hammer.min.js"></script>
-<script src="/public/js/cards.js"></script>
 <script src="/public/js/compatibility.js"></script>
+<script src="/public/js/cards.js"></script>
+
 </body>
 </html>

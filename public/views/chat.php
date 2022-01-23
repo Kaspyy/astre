@@ -45,7 +45,7 @@
             <input type="text" name="chat_id" value="<?=$userChatInfo->getChatId()?>" hidden>
             <input type="text" name="sender_id" value="<?php echo $_SESSION["id"];?>" hidden>
             <input type="text" name="receiver_id" value="<?=$userChatInfo->getId()?>" hidden>
-            <input type="text" name="message" class="chat-input-field" placeholder="Type a message here...">
+            <input type="text" name="message" class="chat-input-field" placeholder="Type a message here..." autocomplete="off">
             <button><i class="fab fa-telegram-plane"></i></button>
         </div>
       </section>

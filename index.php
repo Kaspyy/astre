@@ -9,6 +9,7 @@ Router::get('', 'DefaultController');
 Router::get('edit_profile', 'UserInfoController');
 Router::get('settings', 'UserInfoController');
 Router::get('swipe', 'ProfilesController');
+Router::get('giveLike', 'ProfilesController');
 Router::get('chats','ChatsController');
 Router::get('profile', 'UserInfoController');
 Router::get('chat', 'ChatsController');

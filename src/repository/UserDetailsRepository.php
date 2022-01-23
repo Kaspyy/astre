@@ -126,6 +126,7 @@ class UserDetailsRepository extends Repository
         $stmt->execute();
 
     }
+
     public function getUserInterest(int $id): ?UserInterest
     {
         $stmt = $this->database->connect()->prepare('
@@ -141,16 +142,16 @@ class UserDetailsRepository extends Repository
 
     }
 
-    public function getChats(int $user_account_id): array
+    public function getPairs(int $user_account_id): array
     {
         $result = [];
 
         $stmt = $this->database->connect()->prepare('
-            SELECT iui.id,
-                   user_id,
-                   name,
-                   photo
-    FROM (
+        SELECT iui.id,
+       user_id,
+       name,
+       photo
+FROM (
          SELECT conversation.id,
                 CASE
                     WHEN
@@ -164,7 +165,7 @@ class UserDetailsRepository extends Repository
                                      JOIN
                                  user_account ua ON ua.id = p.user_account_id
                             WHERE conversation.user_account_id = :user_account_id)
-                    WHEN p.user_account_id = :user_account_id THEN 
+                    WHEN p.user_account_id = :user_account_id THEN
                         (SELECT ua.id
                          FROM conversation
                                   JOIN
@@ -178,12 +179,97 @@ class UserDetailsRepository extends Repository
               participant p ON conversation.id = p.conversation_id) AS iui
          JOIN user_account ua ON iui.user_id = ua.id
          JOIN user_photo up ON ua.id = up.user_account_id
-        ');
+where user_id not in (SELECT distinct user_id
+
+                      FROM (
+                               SELECT conversation.id,
+                                      CASE
+                                          WHEN
+                                              conversation.user_account_id = :user_account_id
+                                              THEN
+                                              (
+                                                  SELECT ua.id
+                                                  FROM conversation
+                                                           JOIN
+                                                       participant p ON conversation.id = p.conversation_id
+                                                           JOIN
+                                                       user_account ua ON ua.id = p.user_account_id
+                                                  WHERE conversation.user_account_id = :user_account_id)
+                                          WHEN p.user_account_id = :user_account_id THEN
+                                              (SELECT ua.id
+                                               FROM conversation
+                                                        JOIN
+                                                    participant p ON conversation.id = p.conversation_id
+                                                        JOIN
+                                                    user_account ua ON ua.id = conversation.user_account_id
+                                               WHERE p.user_account_id = :user_account_id)
+                                          END AS user_id
+                               FROM conversation
+                                        JOIN
+                                    participant p ON conversation.id = p.conversation_id) AS iui
+                               join message m on iui.id = m.conversation_id
+                               JOIN user_account ua ON iui.user_id = ua.id
+                               JOIN user_photo up ON ua.id = up.user_account_id
+            )');
         $stmt->bindParam(':user_account_id', $user_account_id, PDO::PARAM_INT);
         $stmt->execute();
         $userChats = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($userChats as $userChat) {
+            $result[] = new UserChat(
+                $userChat['id'],
+                $userChat['user_id'],
+                $userChat['name'],
+                $userChat['photo']
+            );
+        }
+        return $result;
+    }
+
+    public function getChats(int $user_account_id): array
+    {
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT distinct iui.id,
+                user_id,
+                name,
+                photo
+FROM (
+         SELECT conversation.id,
+                CASE
+                    WHEN
+                        conversation.user_account_id = :user_account_id
+                        THEN
+                        (
+                            SELECT ua.id
+                            FROM conversation
+                                     JOIN
+                                 participant p ON conversation.id = p.conversation_id
+                                     JOIN
+                                 user_account ua ON ua.id = p.user_account_id
+                            WHERE conversation.user_account_id = :user_account_id)
+                    WHEN p.user_account_id = :user_account_id THEN
+                        (SELECT ua.id
+                         FROM conversation
+                                  JOIN
+                              participant p ON conversation.id = p.conversation_id
+                                  JOIN
+                              user_account ua ON ua.id = conversation.user_account_id
+                         WHERE p.user_account_id = :user_account_id)
+                    END AS user_id
+         FROM conversation
+                  JOIN
+              participant p ON conversation.id = p.conversation_id) AS iui
+         join message m on iui.id = m.conversation_id
+         JOIN user_account ua ON iui.user_id = ua.id
+         JOIN user_photo up ON ua.id = up.user_account_id
+        ');
+        $stmt->bindParam(':user_account_id', $user_account_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $userPairs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($userPairs as $userChat) {
             $result[] = new UserChat(
                 $userChat['id'],
                 $userChat['user_id'],

@@ -9,18 +9,19 @@ class ProfilesRepository extends Repository
     {
         $result = [];
         $stmt = $this->database->connect()->prepare(
-            "SELECT user_account.id as user_id,
+            "SELECT user_account.id   as user_id,
        user_account.name as name,
        bio,
        birthday,
        photo,
-       g.name as gender
+       g.name            as gender
 FROM user_account
          join gender g on gender_id = g.id
-    join location l on l.location_id = user_account.location_id
+         join location l on l.location_id = user_account.location_id
          join user_photo up on user_account.id = up.user_account_id
          join user_hobby uh on user_account.id = uh.user_account_id
-where user_account.id != :user_account_id"
+where user_account.id != :user_account_id
+  and user_account.id not in (select target_user_id from match where user_account_id = :user_account_id)"
         );
         $stmt->bindParam(':user_account_id', $user_account_id, PDO::PARAM_INT);
         $stmt->execute();
@@ -38,6 +39,17 @@ where user_account.id != :user_account_id"
             );
         }
         return $result;
+    }
+
+    public function giveLike($userId, $receiverId)
+    {
+        $stmt = $this->database->connect()->prepare("
+        INSERT INTO match (user_account_id, target_user_id) values (?, ?)");
+
+        $stmt->execute([
+            $userId,
+            $receiverId
+        ]);
     }
 
 }
