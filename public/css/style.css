@@ -1760,5 +1760,8 @@ input[type="radio"] {
   .messages > .image {
     width: 270px;
   }
+  .new-pairs-fields > .messages {
+    padding-right: 18px;
+  }
 
 }

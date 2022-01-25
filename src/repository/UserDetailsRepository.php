@@ -226,6 +226,47 @@ where user_id not in (SELECT distinct user_id
         return $result;
     }
 
+    public function insertChat(int $user_account_id)
+    {
+        $stmt = $this->database->connect()->prepare('
+        INSERT INTO conversation (user_account_id)
+    values ((SELECT user1
+             from (
+                      SELECT LEAST(match.user_account_id, match.target_user_id)    AS user1,
+                             GREATEST(match.user_account_id, match.target_user_id) AS user2
+                      FROM match
+                      where (match.user_account_id = :user_account_id or target_user_id = :user_account_id)
+                        and (user_account_id, target_user_id) not in (select cuser1, cuser2 from vallconversations)
+                      GROUP BY (LEAST(match.user_account_id, match.target_user_id)),
+                               (GREATEST(match.user_account_id, match.target_user_id))
+                      HAVING count(*) = 2) as u));');
+        $stmt->bindParam(':user_account_id', $user_account_id, PDO::PARAM_INT);
+        if ($stmt)
+        $stmt->execute();
+
+        $this->insertParticipant($user_account_id);
+
+    }
+    private function insertParticipant($user_account_id)
+    {
+        $stmt = $this->database->connect()->prepare('
+        insert
+into participant (conversation_id, user_account_id)
+SELECT c.id, user2
+from (
+         SELECT LEAST(match.user_account_id, match.target_user_id)    AS user1,
+                GREATEST(match.user_account_id, match.target_user_id) AS user2
+         FROM match
+         where (match.user_account_id = :user_account_id or target_user_id = :user_account_id)
+           and (user_account_id, target_user_id) not in
+               (select cuser1, cuser2 from vallconversations)
+         GROUP BY (LEAST(match.user_account_id, match.target_user_id)),
+                  (GREATEST(match.user_account_id, match.target_user_id))
+         HAVING count(*) = 2) as u inner join  conversation c on c.user_account_id = user1;');
+        $stmt->bindParam(':user_account_id', $user_account_id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
     public function getChats(int $user_account_id): array
     {
         $result = [];

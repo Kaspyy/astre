@@ -51,5 +51,4 @@ where user_account.id != :user_account_id
             $receiverId
         ]);
     }
-
 }

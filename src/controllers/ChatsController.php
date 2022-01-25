@@ -23,6 +23,7 @@ class ChatsController extends AppController
     public function chats()
     {
         $this->id = $this->sessionController->get("id");
+//        $this->userDetailsRepository->insertChat($this->id);
         $userPairs = $this->userDetailsRepository->getPairs($this->id);
         $userChats = $this->userDetailsRepository->getChats($this->id);
         $this->render('chats', ['userChats' => $userChats, 'userPairs' => $userPairs]);

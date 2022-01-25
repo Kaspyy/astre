@@ -47,7 +47,7 @@
 
     <div class="messages-container">
         <div class="container-name">Messages</div>
-        <div class="messages" style="margin: auto">
+        <div class="messages" style="text-align: center">
             <?php if (empty($userChats)) {
                 echo "All your chats will appear here";
             } ?>
