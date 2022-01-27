@@ -146,125 +146,41 @@ class UserDetailsRepository extends Repository
     {
         $result = [];
 
-        $stmt = $this->database->connect()->prepare('
-        SELECT iui.id,
-       user_id,
-       name,
-       photo
-FROM (
-         SELECT conversation.id,
-                CASE
-                    WHEN
-                        conversation.user_account_id = :user_account_id
-                        THEN
-                        (
-                            SELECT ua.id
-                            FROM conversation
-                                     JOIN
-                                 participant p ON conversation.id = p.conversation_id
-                                     JOIN
-                                 user_account ua ON ua.id = p.user_account_id
-                            WHERE conversation.user_account_id = :user_account_id)
-                    WHEN p.user_account_id = :user_account_id THEN
-                        (SELECT ua.id
-                         FROM conversation
-                                  JOIN
-                              participant p ON conversation.id = p.conversation_id
-                                  JOIN
-                              user_account ua ON ua.id = conversation.user_account_id
-                         WHERE p.user_account_id = :user_account_id)
-                    END AS user_id
-         FROM conversation
-                  JOIN
-              participant p ON conversation.id = p.conversation_id) AS iui
-         JOIN user_account ua ON iui.user_id = ua.id
-         JOIN user_photo up ON ua.id = up.user_account_id
-where user_id not in (SELECT distinct user_id
+        $stmt = $this->database->connect()->prepare('select *
+from (
+         select vnot_started_conversations.id as con_id,
+                cuser2 as cuser,
+                name,
+                photo
+         from vnot_started_conversations
+                  join user_account on user_account.id = cuser2
+                  join user_photo up on user_account.id = up.user_account_id
+         where cuser1 = :user_account_id
 
-                      FROM (
-                               SELECT conversation.id,
-                                      CASE
-                                          WHEN
-                                              conversation.user_account_id = :user_account_id
-                                              THEN
-                                              (
-                                                  SELECT ua.id
-                                                  FROM conversation
-                                                           JOIN
-                                                       participant p ON conversation.id = p.conversation_id
-                                                           JOIN
-                                                       user_account ua ON ua.id = p.user_account_id
-                                                  WHERE conversation.user_account_id = :user_account_id)
-                                          WHEN p.user_account_id = :user_account_id THEN
-                                              (SELECT ua.id
-                                               FROM conversation
-                                                        JOIN
-                                                    participant p ON conversation.id = p.conversation_id
-                                                        JOIN
-                                                    user_account ua ON ua.id = conversation.user_account_id
-                                               WHERE p.user_account_id = :user_account_id)
-                                          END AS user_id
-                               FROM conversation
-                                        JOIN
-                                    participant p ON conversation.id = p.conversation_id) AS iui
-                               join message m on iui.id = m.conversation_id
-                               JOIN user_account ua ON iui.user_id = ua.id
-                               JOIN user_photo up ON ua.id = up.user_account_id
-            )');
+         union
+
+         select vnot_started_conversations.id as con_id,
+                cuser1 as cuser,
+                name,
+                photo
+         from vnot_started_conversations
+                  join user_account on user_account.id = cuser1
+                  join user_photo up on user_account.id = up.user_account_id
+         where cuser2 = :user_account_id) as vscuauvscuau;');
         $stmt->bindParam(':user_account_id', $user_account_id, PDO::PARAM_INT);
         $stmt->execute();
         $userChats = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($userChats as $userChat) {
             $result[] = new UserChat(
-                $userChat['id'],
-                $userChat['user_id'],
+                $userChat['con_id'],
+                $userChat['cuser'],
                 $userChat['name'],
-                $userChat['photo']
+                $userChat['photo'],
+                $userChat['message_content']
             );
         }
         return $result;
-    }
-
-    public function insertChat(int $user_account_id)
-    {
-        $stmt = $this->database->connect()->prepare('
-        INSERT INTO conversation (user_account_id)
-    values ((SELECT user1
-             from (
-                      SELECT LEAST(match.user_account_id, match.target_user_id)    AS user1,
-                             GREATEST(match.user_account_id, match.target_user_id) AS user2
-                      FROM match
-                      where (match.user_account_id = :user_account_id or target_user_id = :user_account_id)
-                        and (user_account_id, target_user_id) not in (select cuser1, cuser2 from vallconversations)
-                      GROUP BY (LEAST(match.user_account_id, match.target_user_id)),
-                               (GREATEST(match.user_account_id, match.target_user_id))
-                      HAVING count(*) = 2) as u));');
-        $stmt->bindParam(':user_account_id', $user_account_id, PDO::PARAM_INT);
-        if ($stmt)
-        $stmt->execute();
-
-        $this->insertParticipant($user_account_id);
-
-    }
-    private function insertParticipant($user_account_id)
-    {
-        $stmt = $this->database->connect()->prepare('
-        insert
-into participant (conversation_id, user_account_id)
-SELECT c.id, user2
-from (
-         SELECT LEAST(match.user_account_id, match.target_user_id)    AS user1,
-                GREATEST(match.user_account_id, match.target_user_id) AS user2
-         FROM match
-         where (match.user_account_id = :user_account_id or target_user_id = :user_account_id)
-           and (user_account_id, target_user_id) not in
-               (select cuser1, cuser2 from vallconversations)
-         GROUP BY (LEAST(match.user_account_id, match.target_user_id)),
-                  (GREATEST(match.user_account_id, match.target_user_id))
-         HAVING count(*) = 2) as u inner join  conversation c on c.user_account_id = user1;');
-        $stmt->bindParam(':user_account_id', $user_account_id, PDO::PARAM_INT);
-        $stmt->execute();
     }
 
     public function getChats(int $user_account_id): array
@@ -272,39 +188,31 @@ from (
         $result = [];
 
         $stmt = $this->database->connect()->prepare('
-            SELECT distinct iui.id,
-                user_id,
+select *
+from (
+         select vongoing_conversations.id as con_id,
+                cuser2 as cuser,
                 name,
-                photo
-FROM (
-         SELECT conversation.id,
-                CASE
-                    WHEN
-                        conversation.user_account_id = :user_account_id
-                        THEN
-                        (
-                            SELECT ua.id
-                            FROM conversation
-                                     JOIN
-                                 participant p ON conversation.id = p.conversation_id
-                                     JOIN
-                                 user_account ua ON ua.id = p.user_account_id
-                            WHERE conversation.user_account_id = :user_account_id)
-                    WHEN p.user_account_id = :user_account_id THEN
-                        (SELECT ua.id
-                         FROM conversation
-                                  JOIN
-                              participant p ON conversation.id = p.conversation_id
-                                  JOIN
-                              user_account ua ON ua.id = conversation.user_account_id
-                         WHERE p.user_account_id = :user_account_id)
-                    END AS user_id
-         FROM conversation
-                  JOIN
-              participant p ON conversation.id = p.conversation_id) AS iui
-         join message m on iui.id = m.conversation_id
-         JOIN user_account ua ON iui.user_id = ua.id
-         JOIN user_photo up ON ua.id = up.user_account_id
+                photo,
+                message_content
+         from vongoing_conversations
+                  join user_account on user_account.id = cuser2
+                  join user_photo up on user_account.id = up.user_account_id
+         join message m on vongoing_conversations.id = m.conversation_id
+         where cuser1 = :user_account_id
+
+         union
+
+         select vongoing_conversations.id as con_id,
+                cuser1 as cuser,
+                name,
+                photo,
+                message_content
+         from vongoing_conversations
+                  join user_account on user_account.id = cuser1
+                  join user_photo up on user_account.id = up.user_account_id
+                  join message m on vongoing_conversations.id = m.conversation_id
+         where cuser2 = :user_account_id) as vscuauvscuau;
         ');
         $stmt->bindParam(':user_account_id', $user_account_id, PDO::PARAM_INT);
         $stmt->execute();
@@ -312,10 +220,11 @@ FROM (
 
         foreach ($userPairs as $userChat) {
             $result[] = new UserChat(
-                $userChat['id'],
-                $userChat['user_id'],
+                $userChat['con_id'],
+                $userChat['cuser'],
                 $userChat['name'],
-                $userChat['photo']
+                $userChat['photo'],
+                $userChat['message_content']
             );
         }
         return $result;
@@ -371,7 +280,8 @@ FROM (
             $userChat['id'],
             $userChat['user_id'],
             $userChat['name'],
-            $userChat['photo']
+            $userChat['photo'],
+            $userChat['message_content']
         );
     }
 

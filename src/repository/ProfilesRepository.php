@@ -43,12 +43,25 @@ where user_account.id != :user_account_id
 
     public function giveLike($userId, $receiverId)
     {
-        $stmt = $this->database->connect()->prepare("
-        INSERT INTO match (user_account_id, target_user_id) values (?, ?)");
+        $stmt = $this->database->connect()->prepare('INSERT INTO match (user_account_id, target_user_id) values (?, ?)');
 
         $stmt->execute([
             $userId,
             $receiverId
         ]);
+        $stmt = $this->database->connect()->prepare('insert into conversation (id, user_account_id)
+select id, user1
+from vmatches_with_id
+where not exists(select *
+                 from vallconversations
+                 where vmatches_with_id.user1 = cuser1 and vmatches_with_id.user2 = cuser2) order by id desc limit 1;');
+        $stmt->execute();
+        $stmt = $this->database->connect()->prepare('
+insert into participant (conversation_id, user_account_id)
+SELECT id, user2
+from vmatches_with_id order by id desc limit 1;
+');
+        $stmt->execute();
+
     }
 }

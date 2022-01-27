@@ -29,11 +29,6 @@
     <div class="new-pairs-container">
         <div class="container-name">New Pairs</div>
         <div class="new-pairs-fields" style="overflow-y: scroll">
-            <div class="messages" style="margin: auto">
-                <?php if (empty($userPairs)) {
-                    echo "All your pairs will appear here";
-                } ?>
-            </div>
                 <?php foreach ($userPairs as $userChat): ?>
                     <div class="new-pair">
                         <a href="/chat?chat_id=<?= $userChat->getChatId(); ?>" class="new-pair-photo">
@@ -42,6 +37,11 @@
                         <div class="new-pair-username"><?= $userChat->getName(); ?></div>
                     </div>
                 <?php endforeach; ?>
+        </div>
+        <div class="messages" style="margin: auto">
+            <?php if (empty($userPairs)) {
+                echo "All your pairs will appear here";
+            } ?>
         </div>
     </div>
 
@@ -60,10 +60,7 @@
                 <div class="message-container-text">
                     <h3 class="message-container-username"><?= $userChat->getName(); ?></h3>
                     <div class="message-container-snippet">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum
-                        consequuntur, sunt commodi hic doloribus molestiae iure obcaecati
-                        nisi incidunt sapiente omnis, porro in sint sit et unde, saepe
-                        reiciendis aperiam?
+                        <?=$userChat->getMessageSnippet();?>
                     </div>
                 </div>
             </a>

@@ -6,15 +6,17 @@ class UserChat
     private $id;
     private $name;
     private $photo;
-    //TODO add message snippet (if deadlines allow)
+    private $messageSnippet;//TODO add message snippet (if deadlines allow)
 
-    public function __construct($chatId, $id, $name, $photo)
+    public function __construct($chatId, $id, $name, $photo, $messageSnippet)
     {
         $this->chatId = $chatId;
         $this->id = $id;
         $this->name = $name;
         $this->photo = $photo;
+        $this->messageSnippet = $messageSnippet;
     }
+
 
     function getChatId(): int
     {
@@ -34,6 +36,11 @@ class UserChat
     public function getPhoto()
     {
         return $this->photo;
+    }
+
+    public function getMessageSnippet()
+    {
+        return $this->messageSnippet;
     }
 
 
