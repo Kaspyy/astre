@@ -17,7 +17,6 @@ class ProfilesRepository extends Repository
        g.name            as gender
 FROM user_account
          join gender g on gender_id = g.id
-         join location l on l.location_id = user_account.location_id
          join user_photo up on user_account.id = up.user_account_id
          join user_hobby uh on user_account.id = uh.user_account_id
 where user_account.id != :user_account_id

@@ -19,7 +19,7 @@
         <div class="control-group">
             <h3>Select your hobbies:</h3>
             <label class="control control--checkbox">Movies
-                <input type="checkbox" checked="checked" />
+                <input type="checkbox" />
                 <div class="control__indicator"></div>
             </label>
             <label class="control control--checkbox">Shopping
@@ -30,7 +30,7 @@
                 <input type="checkbox" />
                 <div class="control__indicator"></div>
             </label>
-            <label class="control control--checkbox">Travel
+            <label class="control control--checkbox">Travelling
                 <input type="checkbox" />
                 <div class="control__indicator"></div>
             </label>
@@ -58,6 +58,7 @@
     </div>
     </div>
     <script src="https://kit.fontawesome.com/8a50b84207.js" crossorigin="anonymous"></script>
+    <script src="/public/js/select_hobbies.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

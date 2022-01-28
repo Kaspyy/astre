@@ -1756,6 +1756,13 @@ input[type="radio"] {
   width: 50%;
 }
 
+.select-gender-settings-screen .input-field {
+  text-align: center;
+  border-width: 0;
+  background-color: #c5c5c5;
+  font-size: 1.2rem;
+}
+
 @media (min-width: 415px) {
   .messages > .image {
     width: 270px;
@@ -1763,5 +1770,7 @@ input[type="radio"] {
   .new-pairs-fields > .messages {
     padding-right: 18px;
   }
-
+  .select-gender-settings-screen .input-field {
+    text-align: center;
+  }
 }

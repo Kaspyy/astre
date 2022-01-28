@@ -7,6 +7,7 @@ require_once __DIR__ . "/../models/User.php";
 require_once __DIR__ . "/../models/UserChat.php";
 require_once __DIR__ . "/../models/UserGender.php";
 require_once __DIR__ . "/../models/UserInterest.php";
+require_once __DIR__ . "/../models/Location.php";
 
 class UserDetailsRepository extends Repository
 {
@@ -50,6 +51,29 @@ class UserDetailsRepository extends Repository
 
         $stmt->execute();
 
+    }
+
+    public function updateUserLocation(int $userId, string $location)
+    {
+        $stmt = $this->database->connect()->prepare('UPDATE user_account SET location = :location WHERE id = :userId;
+        ');
+
+        $stmt->bindParam(':location', $location);
+        $stmt->bindParam(':userId', $userId);
+        $stmt->execute();
+
+    }
+
+    public function getUserLocation(int $userId)
+    {
+        $stmt = $this->database->connect()->prepare('SELECT location FROM user_account WHERE id = :userId;');
+        $stmt->bindParam(':userId', $userId);
+        $stmt->execute();
+        $userLocation = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return new Location(
+            $userLocation['location']
+        );
     }
 
     public function getUserBio(int $id): ?UserBio
