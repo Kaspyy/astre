@@ -7,11 +7,11 @@ let zodiacInfo = document.querySelector("#zodiacInfo");
 function setCompatibility(element, percentage) {
     element.innerHTML = percentage.toString() + "%";
     element.style.width = percentage + "%";
-    if (percentage <= 29)
+    if (percentage >= 0 && percentage <= 29)
         element.style.backgroundColor = "#fd5068"
     if (percentage >= 30 && percentage <= 69)
         element.style.backgroundColor = "#ffea00"
-    else
+    else if (percentage >= 70 && percentage <= 100)
         element.style.backgroundColor = "#1be4a1"
 }
 
@@ -55,91 +55,60 @@ function setInfo(zodiacSign) {
 }
 
 function checkCompatibility() {
-    if (userZodiacSign === "♎︎") {
-        if (otherZodiacSign === "♈︎") {
-            setCompatibility(overallCompatibilityPercentage, 85);
-            setCompatibility(loveCompatibilityPercentage, 35);
-            setCompatibility(sexCompatibilityPercentage, 40);
-            setCompatibility(friendshipCompatibilityPercentage, 40);
-            setInfo("aries");
-        }
-        if (otherZodiacSign === "♉︎") {
-            setCompatibility(overallCompatibilityPercentage, 85);
-            setCompatibility(loveCompatibilityPercentage, 35);
-            setCompatibility(sexCompatibilityPercentage, 40);
-            setCompatibility(friendshipCompatibilityPercentage, 40);
-            setInfo("taurus");
-        }
-        if (otherZodiacSign === "♊︎") {
-            setCompatibility(overallCompatibilityPercentage, 85);
-            setCompatibility(loveCompatibilityPercentage, 35);
-            setCompatibility(sexCompatibilityPercentage, 40);
-            setCompatibility(friendshipCompatibilityPercentage, 40);
-            setInfo("gemini");
-        }
-        if (otherZodiacSign === "♋︎") {
-            setCompatibility(overallCompatibilityPercentage, 85);
-            setCompatibility(loveCompatibilityPercentage, 35);
-            setCompatibility(sexCompatibilityPercentage, 40);
-            setCompatibility(friendshipCompatibilityPercentage, 40);
-            setInfo("cancer");
-        }
-        if (otherZodiacSign === "♌︎") {
-            setCompatibility(overallCompatibilityPercentage, 85);
-            setCompatibility(loveCompatibilityPercentage, 35);
-            setCompatibility(sexCompatibilityPercentage, 40);
-            setCompatibility(friendshipCompatibilityPercentage, 40);
-            setInfo("leo");
-        }
-        if (otherZodiacSign === "♍︎") {
-            setCompatibility(overallCompatibilityPercentage, 85);
-            setCompatibility(loveCompatibilityPercentage, 35);
-            setCompatibility(sexCompatibilityPercentage, 40);
-            setCompatibility(friendshipCompatibilityPercentage, 40);
-            setInfo("virgo");
-        }
-        if (otherZodiacSign === "♎︎") {
-            setCompatibility(overallCompatibilityPercentage, 85);
-            setCompatibility(loveCompatibilityPercentage, 35);
-            setCompatibility(sexCompatibilityPercentage, 40);
-            setCompatibility(friendshipCompatibilityPercentage, 40);
-            setInfo("libra");
-        }
-        if (otherZodiacSign === "♏︎") {
-            setCompatibility(overallCompatibilityPercentage, 85);
-            setCompatibility(loveCompatibilityPercentage, 35);
-            setCompatibility(sexCompatibilityPercentage, 40);
-            setCompatibility(friendshipCompatibilityPercentage, 40);
-            setInfo("scorpio");
-        }
-        if (otherZodiacSign === "♐︎") {
-            setCompatibility(overallCompatibilityPercentage, 85);
-            setCompatibility(loveCompatibilityPercentage, 35);
-            setCompatibility(sexCompatibilityPercentage, 40);
-            setCompatibility(friendshipCompatibilityPercentage, 40);
-            setInfo("sagittarius");
-        }
-        if (otherZodiacSign === "♑︎") {
-            setCompatibility(overallCompatibilityPercentage, 85);
-            setCompatibility(loveCompatibilityPercentage, 35);
-            setCompatibility(sexCompatibilityPercentage, 40);
-            setCompatibility(friendshipCompatibilityPercentage, 40);
-            setInfo("capricorn");
-        }
-        if (otherZodiacSign === "♒︎") {
-            setCompatibility(overallCompatibilityPercentage, 85);
-            setCompatibility(loveCompatibilityPercentage, 35);
-            setCompatibility(sexCompatibilityPercentage, 40);
-            setCompatibility(friendshipCompatibilityPercentage, 40);
-            setInfo("aquarius");
-        }
-        if (otherZodiacSign === "♓︎") {
-            setCompatibility(overallCompatibilityPercentage, 85);
-            setCompatibility(loveCompatibilityPercentage, 35);
-            setCompatibility(sexCompatibilityPercentage, 40);
-            setCompatibility(friendshipCompatibilityPercentage, 40);
-            setInfo("pisces");
-        }
+    let percentage1 = Math.floor(Math.random() * 100);
+    let percentage2 = Math.floor(Math.random() * 100);
+    let percentage3 = Math.floor(Math.random() * 100);
+    let percentage4 = Math.floor(Math.random() * 100);
+    setCompatibility(overallCompatibilityPercentage, percentage1);
+    setCompatibility(loveCompatibilityPercentage, percentage2);
+    setCompatibility(sexCompatibilityPercentage, percentage3);
+    setCompatibility(friendshipCompatibilityPercentage, percentage4);
+
+    if (otherZodiacSign === "♈︎") {
+        setInfo("aries");
+    }
+    if (otherZodiacSign === "♉︎") {
+        setInfo("taurus");
+    }
+    if (otherZodiacSign === "♊︎") {
+
+        setInfo("gemini");
+    }
+    if (otherZodiacSign === "♋︎") {
+
+        setInfo("cancer");
+    }
+    if (otherZodiacSign === "♌︎") {
+
+        setInfo("leo");
+    }
+    if (otherZodiacSign === "♍︎") {
+
+        setInfo("virgo");
+    }
+    if (otherZodiacSign === "♎︎") {
+
+        setInfo("libra");
+    }
+    if (otherZodiacSign === "♏︎") {
+
+        setInfo("scorpio");
+    }
+    if (otherZodiacSign === "♐︎") {
+
+        setInfo("sagittarius");
+    }
+    if (otherZodiacSign === "♑︎") {
+
+        setInfo("capricorn");
+    }
+    if (otherZodiacSign === "♒︎") {
+
+        setInfo("aquarius");
+    }
+    if (otherZodiacSign === "♓︎") {
+
+        setInfo("pisces");
     }
 
 }

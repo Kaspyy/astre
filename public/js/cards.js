@@ -9,6 +9,7 @@ const messages = document.querySelector(".messages p");
 let targetUserId = 0;
 let otherZodiacSign = '';
 const image = document.querySelector(".image");
+let userZodiacSign = null;
 
 function like(userId, targetUserId) {
     fetch(`/giveLike/${userId}/${targetUserId}`)
@@ -28,7 +29,7 @@ function initCards(card, index) {
     });
 
     if (newCards.length !== 0) {
-        let userZodiacSign = document.querySelector(".sign-icon").textContent.trim();
+        userZodiacSign = document.querySelector(".sign-icon").textContent.trim();
         targetUserId = newCards[0].children[0].value;
         otherZodiacSign = newCards[0].querySelector(".their-zodiac-sign").textContent.trim();
         overallCompatibilityPercentage = newCards[0].querySelector(".overall-percentage-foreground-bar");
@@ -42,7 +43,6 @@ function initCards(card, index) {
         image.removeAttribute("hidden");
         image.style.display = "inline-block";
         messages.innerHTML = "No more new profiles";
-
     }
     console.log("loaded");
     astreContainer.classList.add('loaded');

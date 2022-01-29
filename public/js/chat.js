@@ -2,11 +2,13 @@ const chatBox = document.querySelector('.chat-box');
 const receiver = document.querySelector("[name='receiver_id']");
 const sender = document.querySelector("[name='sender_id']");
 const sendButton = document.querySelector('button');
-const chatId = document.querySelector("[name='chat_id']");
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const chatId = urlParams.get('chat_id')
 const messageContent = document.querySelector('input[placeholder="Type a message here..."]');
 
 console.log(receiver.value)
-setInterval((sender, receiver) => refreshChat(sender,receiver), 2500, sender.value, receiver.value);
+setInterval((sender, receiver) => refreshChat(sender, receiver), 2500, sender.value, receiver.value);
 
 function refreshChat(sender, receiver) {
     console.log(sender, receiver)
@@ -14,7 +16,7 @@ function refreshChat(sender, receiver) {
         method: "GET"
     }).then(function (response) {
         return response.json();
-    }).then(function(messages) {
+    }).then(function (messages) {
         // console.log(messages);
         chatBox.innerHTML = "";
         loadMessages(messages)
@@ -22,7 +24,7 @@ function refreshChat(sender, receiver) {
 }
 
 function loadMessages(messages) {
-    messages.forEach (message => {
+    messages.forEach(message => {
         // console.log(message);
         createMessage(message);
     });
@@ -55,7 +57,7 @@ sendButton.addEventListener("click", function (event) {
     };
     // console.log(data);
 
-    fetch(`/sendMessageJS/${chatId.value}/${sender.value}/${receiver.value}`, {
+    fetch(`/sendMessageJS/${chatId}/${sender.value}/${receiver.value}`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'

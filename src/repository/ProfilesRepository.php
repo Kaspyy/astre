@@ -18,9 +18,8 @@ class ProfilesRepository extends Repository
 FROM user_account
          join gender g on gender_id = g.id
          join user_photo up on user_account.id = up.user_account_id
-         join user_hobby uh on user_account.id = uh.user_account_id
 where user_account.id != :user_account_id
-  and user_account.id not in (select target_user_id from match where user_account_id = :user_account_id)"
+  and user_account.id not in (select target_user_id from match where user_account_id = :user_account_id);"
         );
         $stmt->bindParam(':user_account_id', $user_account_id, PDO::PARAM_INT);
         $stmt->execute();
