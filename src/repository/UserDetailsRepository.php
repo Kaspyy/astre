@@ -214,15 +214,13 @@ from (
         $stmt = $this->database->connect()->prepare('
 select *
 from (
-         select vongoing_conversations.id as con_id,
+         select distinct vongoing_conversations.id as con_id,
                 cuser2 as cuser,
                 name,
-                photo,
-                message_content
+                photo
          from vongoing_conversations
                   join user_account on user_account.id = cuser2
                   join user_photo up on user_account.id = up.user_account_id
-         join message m on vongoing_conversations.id = m.conversation_id
          where cuser1 = :user_account_id
 
          union
@@ -230,12 +228,10 @@ from (
          select vongoing_conversations.id as con_id,
                 cuser1 as cuser,
                 name,
-                photo,
-                message_content
+                photo
          from vongoing_conversations
                   join user_account on user_account.id = cuser1
                   join user_photo up on user_account.id = up.user_account_id
-                  join message m on vongoing_conversations.id = m.conversation_id
          where cuser2 = :user_account_id) as vscuauvscuau;
         ');
         $stmt->bindParam(':user_account_id', $user_account_id, PDO::PARAM_INT);

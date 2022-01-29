@@ -21,3 +21,14 @@ Astre is an online dating web application that combines familiar Tinder-like exp
 - Chat
 - Profile customization
 
+
+## Screenshots
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/shtwzinjcjn930v99xtr.png)
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/hy8arv761laju1t28dvc.png)
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/qmetysabc5xks9l9jxu3.png)
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/tx9x9a5wldtyypj7i1b6.png)
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/bic57f8joy999miebak5.png)
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/n5ptbwj7kn5pi8qkbr3z.png)
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/fqzn0mjgnwbkd80dhx09.png)
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/t7bdganwarx0ko6n9143.png)
