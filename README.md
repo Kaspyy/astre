@@ -40,9 +40,9 @@ set up the database by executing the sql script and run my application using [do
 
 ## Screenshots
 
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/shtwzinjcjn930v99xtr.png)
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/hy8arv761laju1t28dvc.png)
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/qmetysabc5xks9l9jxu3.png)
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/6fu4rzfwu9fiy5egqvda.gif)
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/m71w64ejd22o0w3xonsg.gif)
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ckyoisbb1aaw7f3pmdi5.gif)
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/tx9x9a5wldtyypj7i1b6.png)
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/bic57f8joy999miebak5.png)
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/n5ptbwj7kn5pi8qkbr3z.png)
