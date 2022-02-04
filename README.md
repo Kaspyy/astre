@@ -44,6 +44,8 @@ Login screen
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/6fu4rzfwu9fiy5egqvda.gif "Login screen view")
 Swiping cards
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/m71w64ejd22o0w3xonsg.gif "Swipe view")
+Compatibility view
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/24yuajasnc0ie2jq4spd.png)
 New pairs and chats
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/tx9x9a5wldtyypj7i1b6.png "New pairs and chats view")
 Chat
