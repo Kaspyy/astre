@@ -41,8 +41,7 @@ set up the database by executing the sql script and run my application using [do
 ## Screenshots
 
 Login screen
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3gi4yf3wvo4ta0yqxt1v.gif)
-<img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3gi4yf3wvo4ta0yqxt1v.gif" width="1280" height="720" />
+![Image description](login gif.gif)
 Swiping cards
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/m71w64ejd22o0w3xonsg.gif "Swipe view")
 Compatibility view
