@@ -27,7 +27,7 @@ Astre is an online dating web application that combines familiar Tinder-like exp
 clone this repository
 
 ```bash
-  git clone https://Kaspyy@bitbucket.org/Kaspyy/astre.git
+  git clone https://github.com/Kaspyy/astre.git
 ```
 set up the database by executing the sql script and run my application using [docker](https://www.docker.com/)
 
